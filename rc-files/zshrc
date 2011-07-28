@@ -1,0 +1,126 @@
+# The following lines were added by compinstall
+
+zstyle ':completion:*' completer _expand _complete _ignored _approximate
+zstyle ':completion:*' expand suffix
+zstyle ':completion:*' file-sort name
+zstyle ':completion:*' format 'Completing %b%d%B . . .  '
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-suffixes true
+zstyle ':completion:*' max-errors 1
+zstyle ':completion:*' prompt '{ %e } '
+zstyle :compinstall filename '/home/peter/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=5000
+SAVEHIST=10000
+setopt appendhistory autocd extendedglob
+bindkey -e
+# End of lines configured by zsh-newuser-install
+
+### Customized Settings
+setPrompt()
+{
+    # Example:
+    #   [10:12] peter@cherrywood:pts/1 [~] :)
+    #   !52 - %
+    #
+    # Colors:  [{attr};3{f};4{b}m - ;4{b} is optional
+    #   attr: 0: reset, 1: bold, 2: dim, 3: underline, 5: blink, 7: reverse, 8: hidden
+    #   f/b:  0: black, 1: red, 2: green, 3: yellow, 4: blue, 5: magenta, 6: cyan, 7: white, 9: reset
+    local __userString="%{[0;%(!.31.37)m%}%n@%{[1;37m%}%m%{[0;37m%}:%l%{[0;39m%}"
+    local __lastCommand="%(?.:).%{[1;31m%}%?%{[0;39m%})"
+    local __pwd="%{[1;34m%}%~%{[0;39m%}"
+    local __history="!%{[0;33m%]%!%{[0;39m%}"
+    PS1="[%T] $__userString [$__pwd] $__lastCommand
+$__history - %(!.%{[1;31m%}#%{[0;39m%}.%%) "
+
+}
+setPrompt
+
+# recursive grep
+# Usage: rg <search term> [extension]
+rg() {
+    if [ -z "$2" ]
+    then
+        myExt='php'
+    else
+        myExt="$2"
+    fi
+    find . -name "*.$myExt" -exec grep -In "$1" "{}" \; -print
+}
+
+# xkcd.com/149
+mmas () {
+    echo "What? Make it yourself."
+    echo "-> sudo $(history|tail -1|sed "s/ [0-9][0-9]*[ *] //")"
+    echo "Ok."
+    sudo $(history|tail -1|sed "s/ [0-9][0-9]*[ *] //")
+}
+
+### Options and aliases
+export TERM=xterm-256color
+export PATH=$PATH:~/bin
+cdpath=( . /home/peter/jump )
+
+# ls opts: size, color when to a term
+export LS_OPTS="-I '*.pyc' -h --color=auto --group-directories-first"
+alias ll='ls -lA' # long listing, + hidden
+alias ls="ls $LS_OPTS"
+
+# tree opts: ignore pyc, color, size, skip big directories
+export TREE_OPTS="-I '*.pyc' -Ch --filelimit 20"
+alias tree="tree $TREE_OPTS"
+
+# installation and compilation
+alias cmi="sudo date && ./configure $CONF && make && make test && sudo make install && make clean && date"
+
+# screen-related
+alias svim='screen vim'
+
+# frequent sudo tasks
+alias get='sudo apt-get install'
+alias apres='sudo apache2ctl restart'
+alias agu='sudo apt-get update; sudo apt-get upgrade; sudo apt-get dist-upgrade'
+alias acs='apt-cache search'
+ns () {
+    sudo vim /etc/apache2/sites-available/$1.terst.org +":0r /etc/apache2/sites-available/template" +":%s/DEFAULT/$1/g"
+    if [ $? -eq 0 ]; then
+        sudo mkdir -p /var/www/htdocs/$1.terst.org/docroot
+        sudo a2ensite $1.terst.org
+        sudo apache2ctl restart
+        echo "http://$1.terst.org/ is active."
+    else
+        echo "cancelled...."
+    fi
+}
+es () {
+    sudo vim /etc/apache2/sites-available/$1.terst.org && sudo apache2ctl restart
+}
+# xkcd.com/149
+mmas ()
+{
+    echo "What? Make it yourself."
+    echo "-> sudo $(history|tail -1|sed "s/ [0-9][0-9][0-9][0-9][ *] //")"
+    echo "Ok."
+    sudo $(history|tail -1|sed "s/ [0-9][0-9][0-9][0-9][ *] //")
+}
+
+# update this config and reload
+alias rc='vim ~/.zshrc && source ~/.zshrc'
+alias so="source ~/.zshrc"
+
+
+path=(/usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin $HOME/bin)
+cdpath=( /etc/apache2/sites-available ~ )
+
+# Development
+alias tlog="tail -f /var/www/logs/*"
+sd ()
+{
+    svn diff --diff-cmd=colordiff $@ | more
+}
