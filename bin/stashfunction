@@ -1,0 +1,7 @@
+stash()
+{
+    COMMAND=`builtin history -1 | awk '{ $1=""; print $0 }'`;
+    SSH_HOST='pws'; # setup in ~/.ssh/config
+    DESTFILE='docroot/s/history';
+    echo "$COMMAND # $@" | ssh -t $SSH_HOST "cat >>$DESTFILE -"
+}

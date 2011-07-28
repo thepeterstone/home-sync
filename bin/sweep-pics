@@ -1,0 +1,13 @@
+#!/bin/bash
+cd /home/peter/workspace/sites/terst.org/docroot/b/pic
+for i in $(ls *.jpg); do skindel $i; done
+mv *.gif ../gif/
+
+for j in $(ls *.bak); do 
+    mv $j "../trash/${j%%.bak}"
+done
+cd ..
+tar cvjf /home/peter/trash.$(date +%Y%m%d).tbz trash/*
+rm -f trash/*
+
+

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+pkill node
+~/ws.node.js &
+vim ~/ws.node.js && exec $0

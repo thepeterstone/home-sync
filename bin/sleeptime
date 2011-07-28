@@ -1,0 +1,10 @@
+#!/bin/bash
+
+LOADAVG=$(\
+    uptime |\
+    awk -F'average: ' '{print $2}' |\
+    awk -F', ' '{print "(" $1 "+" $2 "+" $3 ")"}' |\
+    bc\
+)
+
+echo "(8 * $LOADAVG)" | bc
