@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# We're located in bin/
+ROOT=$(cd $(dirname $(dirname $0)); pwd)
+
+main() {
+    rm -rf $ROOT/backups; mkdir $ROOT/backups
+
+    for file in $(ls $ROOT/dot-files); do
+        backupAndReplace $file
+    done
+}
+
+backupAndReplace() {
+    mv $HOME/.$1 $ROOT/backups/$1
+    ln -s $ROOT/dot-files/$1 $HOME/.$1
+}
+
+main

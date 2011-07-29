@@ -1,0 +1,12 @@
+[user]
+	name = Peter Stone
+	email = thepeterstone@gmail.com
+
+
+[color]
+	interactive = always
+	ui = auto
+[grep]
+	lineNumber = true
+[rebase]
+	stat = true
