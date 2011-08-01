@@ -189,6 +189,11 @@ augroup mail
     au BufRead .followup,.article,.letter,/tmp/snd*,/tmp/mutt*,/tmp/moder*,/var/tmp/[a-z][a-z][a-z][a-z][0-9][0-9][0-9]*,/tmp/[0-9][0-9][0-9][0-9][0-9][a-z][a-z][a-z] set formatoptions=tcqro2 comments=n:>,n::,n:»,n:] tw=76 autoindent
 augroup END
 
+" Markdown document format
+augroup markdown
+    au BufRead *.md set syntax=mkd textwidth=80 autoindent
+augroup end
+
 "C programs
 augroup cprog
     au BufRead *.cpp,*.c,*.h set formatoptions=croq sm sw=4 sts=4 cindent comments=sr:/*,mb:*,el:*/,:// | if file_readable("tags.vim") | so tags.vim | endif
