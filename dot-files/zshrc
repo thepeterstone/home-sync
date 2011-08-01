@@ -63,6 +63,7 @@ mmas () {
 }
 
 ### Options and aliases
+export EDITOR=vim
 export TERM=xterm-256color
 export PATH=$PATH:~/bin
 cdpath=( . /home/peter/jump )
