@@ -12,7 +12,7 @@ main() {
 }
 
 backupAndReplace() {
-    mv $HOME/.$1 $ROOT/backups/$1
+    mv -f $HOME/.$1 $ROOT/backups/$1
     ln -s $ROOT/dot-files/$1 $HOME/.$1
 }
 
