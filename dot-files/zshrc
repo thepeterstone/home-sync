@@ -1,3 +1,7 @@
+# set up paths first
+path=($HOME/bin /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin .)
+cdpath=( $HOME/jump $HOME )
+
 # The following lines were added by compinstall
 
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
@@ -65,8 +69,6 @@ mmas () {
 ### Options and aliases
 export EDITOR=vim
 export TERM=xterm-256color
-export PATH=$PATH:~/bin
-cdpath=( . /home/peter/jump )
 
 # ls opts: size, color when to a term
 export LS_OPTS="-I '*.pyc' -h --color=auto --group-directories-first"
@@ -116,8 +118,6 @@ alias rc='vim ~/.zshrc && source ~/.zshrc'
 alias so="source ~/.zshrc"
 
 
-path=(/usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin $HOME/bin)
-cdpath=( /etc/apache2/sites-available ~ )
 
 # Development
 alias tlog="tail -f /var/www/logs/*"
