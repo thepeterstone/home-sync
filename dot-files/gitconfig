@@ -10,3 +10,7 @@
 	lineNumber = true
 [rebase]
 	stat = true
+
+[alias]
+  st = status
+  ci = commit
