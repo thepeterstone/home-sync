@@ -131,6 +131,11 @@ cmap q1<CR> q!<CR>
 cmap Wq<CR> wq<CR>
 cmap WQ<CR> wq<CR>
 
+" Version control (requires VCSCommand.vim)
+nmap <Leader>vr :VCSRevert<CR>
+nmap <Leader>vl :VCSLog<CR>
+nmap <Leader>vc :VCSCommit<CR>
+nmap <Leader>vd :VCSDiff<CR>
 
 """"""""""""""
 "Color scheme
