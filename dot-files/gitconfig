@@ -12,5 +12,6 @@
 	stat = true
 
 [alias]
-  st = status
   ci = commit
+  co = checkout
+  st = status
