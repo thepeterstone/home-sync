@@ -74,10 +74,20 @@ map <C-c> <Esc>
 "use ^c to quit with an error code 
 nmap <C-c> :cq<CR>
 
-" taglist (requires taglist.vim)
-nmap <C-g> :TlistToggle<CR>
-let Tlist_Close_On_Select = 1
-let Tlist_Compact_Format = 1
+" SuperTab (requires supertab.vim)
+let g:SuperTabefaultCompletionType = "context"
+let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+function MyTagContext()
+  if filereadable(expand('%:p:h') . '/tags')
+    return "\<c-x>\<c-]>"
+  endif
+endfunction
+let g:SuperTabCompletionContexts = ['MyTagContext', 's:ContextText', 's:ContextDiscover']
+let g:SuperTabNoCompleteAfter = [ '\s', '{', ',' ]
+let g:SuperTabLongestEnhanced = 1
+
+" tagbar (requires tagbar.vim)
+nmap <C-g> :TagbarToggle<CR>
 
 "TagExplorer
 nmap <silent> <C-m> :TagExplorer<CR> 
