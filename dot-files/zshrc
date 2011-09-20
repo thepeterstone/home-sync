@@ -93,7 +93,8 @@ alias acs='apt-cache search'
 ns () {
     sudo vim /etc/apache2/sites-available/$1.terst.org +":0r /etc/apache2/sites-available/template" +":%s/DEFAULT/$1/g"
     if [ $? -eq 0 ]; then
-        sudo mkdir -p /var/www/htdocs/$1.terst.org/docroot
+        sudo mkdir -p /workspace/sites/$1.terst.org/docroot
+        sudo ln -s /workspace/sites/$1.terst.org /var/www/htdocs/$1.terst.org
         sudo a2ensite $1.terst.org
         sudo apache2ctl restart
         echo "http://$1.terst.org/ is active."
@@ -120,8 +121,9 @@ alias so="source ~/.zshrc"
 
 
 # Development
-alias tlog="tail -f /var/www/logs/*"
+alias tlog="tail -fn0 /var/log/apache2/*"
 sd ()
 {
     svn diff --diff-cmd=colordiff $@ | more
 }
+alias zf=/workspace/runtimes/ZendFramework-1.11.10/bin/zf.sh
