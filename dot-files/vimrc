@@ -62,11 +62,6 @@ set history=1000      " Number of history commands to remember
 
 """""""""""""""
 " Mappings
-"
-nmap <C-Tab> :tabNext<CR>
-imap <C-Tab> <Esc>:tabNext<CR>a
-nmap <C-S-Tab> :tabprevious<CR>
-imap <C-S-Tab> <Esc>:tabprevious<CR>a
 let mapleader = "`"
 
 "use ^c for Esc, except in normal mode 
@@ -96,6 +91,10 @@ nmap <silent> <C-m> :TagExplorer<CR>
 nmap <silent> <C-f> :NERDTreeToggle <CR>
 vmap <C-f> :NERDTreeToggle <CR>
 imap <C-f> <Esc>:NERDTreeToggle<CR>
+
+" Mini Buffer Explorer (requires minibufexpl.vim)
+let g:miniBufExplMapCTabSwitchBufs = 1 
+let g:miniBufExplModSelTarget = 1 
 
 " Source Explorer (srcexpl.vim)
 nmap <F2> :SrcExplToggle<CR>
