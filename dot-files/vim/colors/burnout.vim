@@ -1,51 +1,3 @@
-" Vim color file
-" Maintainer:   Jani Nurminen <slinky@iki.fi>
-" Last Change:  $Id: zenburn.vim,v 2.21 2011/04/26 12:13:41 slinky Exp slinky $
-" URL:          http://slinky.imukuppi.org/zenburnpage/
-" License:      GNU GPL <http://www.gnu.org/licenses/gpl.html>
-"
-" Nothing too fancy, just some alien fruit salad to keep you in the zone.
-" This syntax file was designed to be used with dark environments and
-" low light situations. Of course, if it works during a daybright office, go
-" ahead :)
-"
-" Owes heavily to other Vim color files! With special mentions
-" to "BlackDust", "Camo" and "Desert".
-"
-" To install, copy to ~/.vim/colors directory.
-"
-" Alternatively, you can use Vimball installation:
-"     vim zenburn.vba
-"     :so %
-"     :q
-"
-" For details, see :help vimball
-"
-" After installation, use it with :colorscheme zenburn.
-" See also :help syntax
-"
-" Credits:
-"  - Jani Nurminen - original Zenburn, maintainer
-"  - Steve Hall & Cream posse - higher-contrast Visual selection
-"  - Kurt Maier - 256 color console coloring, low and high contrast toggle,
-"                 bug fixing
-"  - Charlie - spotted too bright StatusLine in non-high contrast mode
-"  - Pablo Castellazzi - CursorLine fix for 256 color mode
-"  - Tim Smith - force dark background
-"  - John Gabriele - spotted bad Ignore-group handling
-"  - Zac Thompson - spotted invisible NonText in low contrast mode
-"  - Christophe-Marie Duquesne - suggested making a Vimball,
-"    suggested support for ctags_highlighting.vim
-"  - Andrew Wagner - noted the CursorColumn bug (guifg was unintentionally set),
-"                    unify CursorColumn colour
-"  - Martin Langasek - clarify the license, whitespace fixes
-"  - Marcin Szamotulski - support autocomplete for Zenburn configuration
-"                         parameters
-"  - Clayton Parker (claytron) - Convinced by Kurt Maier to use Zenburn. Point
-"    out issues with LineNr, fix directory styles, and their usage in MacVim.
-"  - PaweÅ. Piekarski - Spotted bad FoldColumn and TabLine. Made better 
-"                      FoldColumn colors, fixed TabLine colors.
-"
 " CONFIGURABLE PARAMETERS:
 "
 " You can use the default (don't set any parameters), or you can
@@ -62,7 +14,7 @@
 " * You can now set a darker background for bright environments. To activate, use:
 "   contrast Zenburn, use:
 "
-"      let g:zenburn_high_Contrast = 1
+     let g:zenburn_high_Contrast = 1
 "
 " * For example, Vim help files uses the Ignore-group for the pipes in tags
 "   like "|somelink.txt|". By default, the pipes are not visible, as they
@@ -106,15 +58,15 @@
 "
 " * New (dark) Visual coloring has been introduced.
 "   The dark Visual is more aligned with the rest of the colour scheme,
-"   especially if you use line numbers. If you wish to use the 
+"   especially if you use line numbers. If you wish to use the
 "   old Visual coloring, use
 "
 "      let g:zenburn_old_Visual = 1
 "
 "   Default is to use the new Visual.
 "
-"  * EXPERIMENTAL FEATURE: Zenburn will automatically detect if you 
-"    have ctags_highlighting.vim (by Al Budden, 
+"  * EXPERIMENTAL FEATURE: Zenburn will automatically detect if you
+"    have ctags_highlighting.vim (by Al Budden,
 "    http://www.vim.org/scripts/script.php?script_id=2646) enabled, and
 "    will set sensible highlight links. Nothing will happen if you do
 "    not have ctags_highlighting.vim. If you do not want this feature, you can
@@ -127,7 +79,7 @@
 " * To turn the parameter(s) back to defaults, use UNLET or set them to 0:
 "
 "      unlet g:zenburn_alternate_Include
-"   or 
+"   or
 "      let g:zenburn_alternate_Include = 0
 "
 "
@@ -204,6 +156,7 @@ hi DiffChange      guibg=#333333
 hi DiffDelete      guifg=#333333 guibg=#464646
 hi DiffText        guifg=#ecbcbc guibg=#41363c gui=bold
 hi Directory       guifg=#9fafaf gui=bold
+"hi Directory       guifg=#dcdccc gui=bold
 hi ErrorMsg        guifg=#80d4aa guibg=#2f2f2f gui=bold
 hi Exception       guifg=#c3bf9f gui=bold
 hi Float           guifg=#c0bed1
@@ -211,28 +164,37 @@ hi FoldColumn      guifg=#93b3a3 guibg=#3f4040
 hi Folded          guifg=#93b3a3 guibg=#3f4040
 hi Function        guifg=#efef8f
 hi Identifier      guifg=#efdcbc
+"hi Identifier      guifg=#dcdcdc
 hi IncSearch       guibg=#f8f893 guifg=#385f38
 hi Keyword         guifg=#f0dfaf gui=bold
 hi Label           guifg=#dfcfaf gui=underline
+hi LineNr          guifg=#9fafaf guibg=#262626
 hi Macro           guifg=#ffcfaf gui=bold
 hi ModeMsg         guifg=#ffcfaf gui=none
+"hi ModeMsg         guifg=#6fb86f gui=none
 hi MoreMsg         guifg=#ffffff gui=bold
+hi NonText         guifg=#404040
 hi Number          guifg=#8cd0d3
 hi Operator        guifg=#f0efd0
 hi PreCondit       guifg=#dfaf8f gui=bold
 hi PreProc         guifg=#ffcfaf gui=bold
+"hi PreProc         guifg=#ffb23f gui=bold
 hi Question        guifg=#ffffff gui=bold
 hi Repeat          guifg=#ffd7a7 gui=bold
 hi Search          guifg=#ffffe0 guibg=#284f28
 hi SpecialChar     guifg=#dca3a3 gui=bold
+"hi SpecialChar     guifg=#9fbfd6 gui=bold
 hi SpecialComment  guifg=#82a282 gui=bold
 hi Special         guifg=#cfbfaf
+"hi Special         guifg=#9fbfd6
 hi SpecialKey      guifg=#9ece9e
 hi Statement       guifg=#e3ceab gui=none
+"hi Statement       guifg=#6fb86f  gui=none
 hi StatusLine      guifg=#313633 guibg=#ccdc90
 hi StatusLineNC    guifg=#2e3330 guibg=#88b090
 hi StorageClass    guifg=#c3bf9f gui=bold
 hi String          guifg=#cc9393
+"hi String          guifg=#b75151
 hi Structure       guifg=#efefaf gui=bold
 hi Tag             guifg=#e89393 gui=bold
 hi Title           guifg=#efefef gui=bold
@@ -257,27 +219,35 @@ if &t_Co > 255
     hi Comment         ctermfg=108
     hi Conditional     ctermfg=223   cterm=bold
     hi Constant        ctermfg=181   cterm=bold
-    hi Cursor          ctermfg=233   ctermbg=109     cterm=bold
+    hi Cursor          ctermfg=0   ctermbg=109     cterm=bold
     hi Debug           ctermfg=181   cterm=bold
     hi Define          ctermfg=223   cterm=bold
     hi Delimiter       ctermfg=245
     hi DiffAdd         ctermfg=66    ctermbg=237     cterm=bold
+    "hi DiffAdd         ctermfg=66    ctermbg=0     cterm=bold
     hi DiffChange      ctermbg=236
     hi DiffDelete      ctermfg=236   ctermbg=238
+    "hi DiffDelete      ctermfg=236   ctermbg=0
     hi DiffText        ctermfg=217   ctermbg=237     cterm=bold
+    "hi DiffText        ctermfg=217   ctermbg=0     cterm=bold
     hi Directory       ctermfg=109   cterm=bold
+    "hi Directory       ctermfg=188   cterm=bold
     hi ErrorMsg        ctermfg=115   ctermbg=236     cterm=bold
     hi Exception       ctermfg=249   cterm=bold
     hi Float           ctermfg=251
+    hi FoldColumn      ctermfg=109   ctermbg=238
+    hi Folded          ctermfg=109   ctermbg=238
     hi Function        ctermfg=228
     hi Identifier      ctermfg=223
     hi IncSearch       ctermbg=228   ctermfg=238
     hi Keyword         ctermfg=223   cterm=bold
     hi Label           ctermfg=187   cterm=underline
-    hi LineNr          ctermfg=248   ctermbg=233
+    hi LineNr          ctermfg=248   ctermbg=0
+    "hi LineNr          ctermfg=248   ctermbg=0
     hi Macro           ctermfg=223   cterm=bold
     hi ModeMsg         ctermfg=223   cterm=none
     hi MoreMsg         ctermfg=15    cterm=bold
+    hi NonText         ctermfg=238
     hi Number          ctermfg=116
     hi Operator        ctermfg=230
     hi PreCondit       ctermfg=180   cterm=bold
@@ -289,22 +259,27 @@ if &t_Co > 255
     hi SpecialComment  ctermfg=108   cterm=bold
     hi Special         ctermfg=181
     hi SpecialKey      ctermfg=151
-    hi Statement       ctermfg=187   ctermbg=234     cterm=none
+    hi Statement       ctermfg=187   ctermbg=0     cterm=none
+    "hi Statement       ctermfg=187   ctermbg=0     cterm=none
     hi StatusLine      ctermfg=236   ctermbg=186
-    hi StatusLineNC    ctermfg=235   ctermbg=108
+    hi StatusLineNC    ctermfg=0   ctermbg=108
     hi StorageClass    ctermfg=249   cterm=bold
     hi String          ctermfg=174
     hi Structure       ctermfg=229   cterm=bold
     hi Tag             ctermfg=181   cterm=bold
-    hi Title           ctermfg=7     ctermbg=234     cterm=bold
-    hi Todo            ctermfg=108   ctermbg=234     cterm=bold
+    hi Title           ctermfg=7     ctermbg=0     cterm=bold
+    "hi Title           ctermfg=7     ctermbg=0     cterm=bold
+    hi Todo            ctermfg=108   ctermbg=0     cterm=bold
+    "hi Todo            ctermfg=108   ctermbg=0     cterm=bold
     hi Typedef         ctermfg=253   cterm=bold
     hi Type            ctermfg=187   cterm=bold
-    hi Underlined      ctermfg=188   ctermbg=234     cterm=bold
+    hi Underlined      ctermfg=188   ctermbg=0     cterm=bold
+    "hi Underlined      ctermfg=188   ctermbg=0     cterm=bold
     hi VertSplit       ctermfg=236   ctermbg=65
     hi VisualNOS       ctermfg=236   ctermbg=210     cterm=bold
     hi WarningMsg      ctermfg=15    ctermbg=236     cterm=bold
     hi WildMenu        ctermbg=236   ctermfg=194     cterm=bold
+    hi CursorLine      ctermbg=236   cterm=none
 
     " spellchecking, always "bright" background
     hi SpellLocal ctermfg=14  ctermbg=237
@@ -314,10 +289,10 @@ if &t_Co > 255
 
     " pmenu
     hi PMenu      ctermfg=248  ctermbg=0
-    hi PMenuSel   ctermfg=223 ctermbg=235
+    hi PMenuSel   ctermfg=223 ctermbg=0
 
     if exists("g:zenburn_high_Contrast") && g:zenburn_high_Contrast
-        hi Normal ctermfg=188 ctermbg=234
+        hi Normal ctermfg=188 ctermbg=0
         hi NonText         ctermfg=238
 
         if exists("g:zenburn_color_also_Ignore") && g:zenburn_color_also_Ignore
@@ -325,12 +300,12 @@ if &t_Co > 255
         endif
 
         " hc mode, darker CursorLine, default 236
-        hi CursorLine      ctermbg=233   cterm=none
+        hi CursorLine      ctermbg=0   cterm=none
 
         if exists("g:zenburn_unified_CursorColumn") && g:zenburn_unified_CursorColumn
-            hi CursorColumn      ctermbg=233   cterm=none
+            hi CursorColumn      ctermbg=0   cterm=none
         else
-            hi CursorColumn      ctermbg=235   cterm=none
+            hi CursorColumn      ctermbg=0   cterm=none
         endif
     else
         hi Normal ctermfg=188 ctermbg=237
@@ -339,8 +314,11 @@ if &t_Co > 255
         hi diffdelete      ctermbg=238
         hi difftext        ctermbg=237
         hi errormsg        ctermbg=237
+        hi foldcolumn      ctermbg=238
+        hi folded          ctermbg=238
         hi incsearch       ctermbg=228
-        hi linenr          ctermbg=235
+        hi linenr          ctermbg=0
+        "hi linenr          ctermbg=238
         hi search          ctermbg=238
         hi statement       ctermbg=237
         hi statusline      ctermbg=144
@@ -357,7 +335,7 @@ if &t_Co > 255
         if exists("g:zenburn_color_also_Ignore") && g:zenburn_color_also_Ignore
             hi Ignore          ctermfg=240
         endif
-        
+
         " normal mode, lighter CursorLine
         hi CursorLine      ctermbg=238   cterm=none
 
@@ -388,6 +366,7 @@ endif
 if exists("g:zenburn_high_Contrast") && g:zenburn_high_Contrast
     " use new darker background
     hi Normal          guifg=#dcdccc guibg=#1f1f1f
+    "hi Normal          guifg=#ffffff guibg=#000000
     hi CursorLine      guibg=#121212 gui=bold
     if exists("g:zenburn_unified_CursorColumn") && g:zenburn_unified_CursorColumn
         hi CursorColumn    guibg=#121212 gui=bold
@@ -399,12 +378,16 @@ if exists("g:zenburn_high_Contrast") && g:zenburn_high_Contrast
     hi PmenuSbar       guibg=#2e3330 guifg=#000000
     hi PMenuThumb      guibg=#a0afa0 guifg=#040404
     hi MatchParen      guifg=#f0f0c0 guibg=#383838 gui=bold
+    "hi SignColumn      guifg=#9fafaf guibg=#000000 gui=bold
+    "hi TabLineFill     guifg=#cfcfaf guibg=#000000 gui=bold
+    "hi TabLineSel      guifg=#efefef guibg=#000000 gui=bold
+    "hi TabLine         guifg=#b6bf98 guibg=#000000 gui=bold
     hi SignColumn      guifg=#9fafaf guibg=#181818 gui=bold
     hi TabLineFill     guifg=#cfcfaf guibg=#181818 gui=bold
     hi TabLineSel      guifg=#efefef guibg=#1c1c1b gui=bold
     hi TabLine         guifg=#b6bf98 guibg=#181818 gui=bold
     hi NonText         guifg=#404040 gui=bold
-    
+    hi CursorColumn    guifg=#dcdccc guibg=#2b2b2b
     hi LineNr          guifg=#9fafaf guibg=#161616
 else
     " Original, lighter background
@@ -424,8 +407,8 @@ else
     hi TabLineFill     guifg=#cfcfaf guibg=#353535 gui=bold
     hi TabLineSel      guifg=#efefef guibg=#3a3a39 gui=bold
     hi TabLine         guifg=#b6bf98 guibg=#353535 gui=bold
+    hi CursorColumn    guifg=#dcdccc guibg=#4f4f4f
     hi NonText         guifg=#5b605e gui=bold
-    
     hi LineNr          guifg=#9fafaf guibg=#262626
 endif
 
@@ -459,8 +442,8 @@ else
         hi VisualNOS     guibg=#2f2f2f
 
         if &t_Co > 255
-            hi Visual    ctermbg=235
-            hi VisualNOS ctermbg=235
+            hi Visual    ctermbg=0
+            hi VisualNOS ctermbg=0
         endif
     endif
 endif
@@ -494,14 +477,14 @@ if exists("g:zenburn_high_Contrast") && g:zenburn_high_Contrast
     hi TabLine       guifg=#88b090 guibg=#313633 gui=none
     hi TabLineSel    guifg=#ccd990 guibg=#222222
     hi TabLineFill   guifg=#88b090 guibg=#313633 gui=none
-    
+
     hi SpecialKey    guibg=#242424
-    
+
     if &t_Co > 255
-        hi FoldColumn    ctermbg=233 ctermfg=109
-        hi Folded        ctermbg=233 ctermfg=109
+        hi FoldColumn    ctermbg=0 ctermfg=109
+        hi Folded        ctermbg=0 ctermfg=109
         hi TabLine       ctermbg=236 ctermfg=108 cterm=none
-        hi TabLineSel    ctermbg=235 ctermfg=186 cterm=bold
+        hi TabLineSel    ctermbg=0 ctermfg=186 cterm=bold
         hi TabLineFill   ctermbg=236 ctermfg=236
     endif
 else
@@ -510,15 +493,15 @@ else
     hi TabLine       guifg=#d0d0b8 guibg=#222222 gui=none
     hi TabLineSel    guifg=#f0f0b0 guibg=#333333 gui=bold
     hi TabLineFill   guifg=#dccdcc guibg=#101010 gui=none
-    
+
     hi SpecialKey    guibg=#444444
 
     if &t_Co > 255
         hi FoldColumn    ctermbg=236 ctermfg=109
         hi Folded        ctermbg=236 ctermfg=109
-        hi TabLine       ctermbg=235 ctermfg=187 cterm=none
+        hi TabLine       ctermbg=0 ctermfg=187 cterm=none
         hi TabLineSel    ctermbg=236 ctermfg=229 cterm=bold
-        hi TabLineFill   ctermbg=233 ctermfg=233
+        hi TabLineFill   ctermbg=0 ctermfg=0
     endif
 endif
 
@@ -537,7 +520,7 @@ if exists("_zenburn_ctags") && _zenburn_ctags
         " they're not visible outside the method.
         " If this is some very bright colour group then things look bad.
     	hi link CTagsGlobalVariable    Identifier
-        
+
         hi CTagsClass             guifg=#acd0b3
         if &t_Co > 255
             hi CTagsClass         ctermfg=115
@@ -547,7 +530,7 @@ if exists("_zenburn_ctags") && _zenburn_ctags
         hi link CTagsMember       Function
 
     	hi link CTagsGlobalConstant    Constant
-  
+
         " These do not yet have support, I can't get them to appear
         hi link EnumerationValue  Float
         hi link EnumerationName   Identifier
@@ -558,4 +541,5 @@ if exists("_zenburn_ctags") && _zenburn_ctags
 endif
 
 " TODO check for more obscure syntax groups that they're ok
+
 
