@@ -12,6 +12,7 @@
 	stat = true
 
 [alias]
-  ci = commit
+  ci = commit --verbose
   co = checkout
   st = status
+  conflicts = ls-files --unmerged
