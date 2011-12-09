@@ -118,12 +118,25 @@ mmas ()
 alias rc='vim ~/.zshrc && source ~/.zshrc'
 alias so="source ~/.zshrc"
 
+alias histc="rm -rf ~/.lesshst ~/.histfile ~/.viminfo ~/.mysql_history ~/.zcompdump ~/.bash_history ~/.DS_Store ~/.Xauthority ~/.cache ~/.sqlite_history"
 
 
 # Development
-alias tlog="tail -fn0 /var/log/apache2/*"
+alias tailf="tail -fn0"
+tlog ()
+{
+    if [ -z "$1" ]
+    then
+        tail -fn0 "/var/log/apache2/*"
+    else
+        tail -fn0 /var/log/apache2/{$1.access,error,rewrite}.log
+    fi
+}
+
+
 sd ()
 {
     svn diff --diff-cmd=colordiff $@ | more
 }
 alias zf=/workspace/runtimes/ZendFramework-1.11.10/bin/zf.sh
+alias sc="sudo -u www-data /workspace/sites/s.terst.org/app/console"
