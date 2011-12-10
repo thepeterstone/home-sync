@@ -4,21 +4,12 @@
 [submodule "dot-files/vim/bundle/PIV"]
 	path = dot-files/vim/bundle/PIV
 	url = git://github.com/spf13/PIV.git
-[submodule "dot-files/vim/bundle/https:/github.com/vim-scripts/The-NERD-tree"]
-	path = dot-files/vim/bundle/https:/github.com/vim-scripts/The-NERD-tree
-	url = git://github.com/vim-scripts/The-NERD-tree.git
-[submodule "dot-files/vim/bundle/https:/github.com/Shougo/neocomplcache"]
-	path = dot-files/vim/bundle/https:/github.com/Shougo/neocomplcache
-	url = git://github.com/Shougo/neocomplcache.git
 [submodule "dot-files/vim/bundle/neocomplcache"]
 	path = dot-files/vim/bundle/neocomplcache
 	url = git://github.com/Shougo/neocomplcache.git
 [submodule "dot-files/vim/bundle/phpcomplete.vim"]
 	path = dot-files/vim/bundle/phpcomplete.vim
 	url = git://github.com/shawncplus/phpcomplete.vim.git
-[submodule "dot-files/vim/bundle/The-NERD-tree"]
-	path = dot-files/vim/bundle/The-NERD-tree
-	url = git://github.com/vim-scripts/The-NERD-tree.git
 [submodule "dot-files/vim/bundle/nerdtree"]
 	path = dot-files/vim/bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
