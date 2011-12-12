@@ -21,13 +21,20 @@ main() {
 
 backupAndReplace() {
     [ -e $HOME/.$1 ] && mv -f $HOME/.$1 $ROOT/backups/$1
+    rm -f $HOME/.$1
     ln -s $ROOT/dot-files/$1 $HOME/.$1
 }
 
 updateAndLoadSubmodules() {
-    cd $ROOT
-    git submodule init
-    git submodule update
+    which git >/dev/null
+
+    if [ 0 -ne "$?" ]; then
+        echo "Git doesn't appear to be installed, vim plugins won't be loaded"
+    else
+      cd $ROOT
+      git submodule init
+      git submodule update
+  fi
 }
 
 verify() {
