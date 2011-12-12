@@ -4,16 +4,39 @@
 ROOT=$(cd $(dirname $(dirname $0)); pwd)
 
 main() {
+    #clear out our backups
     rm -rf $ROOT/backups; mkdir $ROOT/backups
 
+    # update the repo and load submodules
+    updateAndLoadSubmodules
+
+    # replace our config files
     for file in $(ls $ROOT/dot-files); do
         backupAndReplace $file
     done
+
+    # Check settings
+    verify
 }
 
 backupAndReplace() {
     [ -e $HOME/.$1 ] && mv -f $HOME/.$1 $ROOT/backups/$1
     ln -s $ROOT/dot-files/$1 $HOME/.$1
 }
+
+updateAndLoadSubmodules() {
+    cd $ROOT
+    git submodule init
+    git submodule update
+}
+
+verify() {
+    which zsh >/dev/null && grep $USER /etc/passwd|grep bin/zsh >/dev/null 
+    if [ 0 -ne "$?" ]; then
+        echo "Zsh is not your shell, shell bindings won't work."
+    fi
+
+}
+
 
 main
