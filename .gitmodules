@@ -40,3 +40,6 @@
 [submodule "dot-files/vim/bundle/vim-colors-solarized"]
 	path = dot-files/vim/bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "dot-files/vim/bundle/command-t"]
+	path = dot-files/vim/bundle/command-t
+	url = git://git.wincent.com/command-t.git
