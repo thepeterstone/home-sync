@@ -140,3 +140,8 @@ sd ()
 }
 alias zf=/workspace/runtimes/ZendFramework-1.11.10/bin/zf.sh
 alias sc="sudo -u www-data /workspace/sites/s.terst.org/app/console"
+cdls () {
+    \cd $1
+    ls -t --color=always | head -3 | sed 's/^/\t/'
+}
+alias cd=cdls
