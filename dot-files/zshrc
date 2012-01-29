@@ -74,6 +74,7 @@ export TERM=xterm-256color
 export LS_OPTS="-I '*.pyc' -h --color=auto --group-directories-first"
 alias ll='ls -lA' # long listing, + hidden
 alias ls="ls $LS_OPTS"
+alias l='tree -L 2 -ug --filelimit 1000'
 
 # tree opts: ignore pyc, color, size, skip big directories
 export TREE_OPTS="-I '*.pyc' -Ch --filelimit 20"
