@@ -34,3 +34,98 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+SUDO='sudo'
+if [ "$USER" = "root" ]; then
+    SUDO=''
+fi
+
+# Apache sites
+es () {
+    $SUDO vim /etc/apache2/sites-available/$1.terst.org && $SUDO apache2ctl restart
+}
+ns () {
+    $SUDO vim /etc/apache2/sites-available/$1.terst.org +":0r /etc/apache2/sites-available/template" +":%s/DEFAULT/$1/g"
+    if [ $? -eq 0 ]; then
+        $SUDO mkdir -p /workspace/sites/$1.terst.org/docroot
+        $SUDO ln -s /workspace/sites/$1.terst.org /var/www/htdocs/$1.terst.org
+        $SUDO a2ensite $1.terst.org
+        $SUDO apache2ctl restart
+        echo "http://$1.terst.org/ is active."
+    else
+        echo "cancelled...."
+    fi
+}
+# xkcd.com/149
+mmas ()
+{
+    echo "What? Make it yourself."
+    echo "-> $SUDO $(history|tail -1|awk '{$1="";print}')"
+    echo "Ok."
+    $SUDO $(history|tail -1|awk '{$1="";print}')
+}
+tlog () {
+    if [ -z "$1" ]; then
+        tail -fn0 "/var/log/apache2/*"
+    else
+        tail -fn0 /var/log/apache2/{$1.access,error,rewrite}.log
+    fi
+}
+cdls () {
+    \cd $1
+    # interpolating LS_OPTS at runtime is weird...
+    ls -thG | head -3 | sed 's/^/    /'
+}
+
+
+#### OS- or distribution-dependent...
+ARCH=false
+DEBIAN=false
+MAC=false
+
+if [ "$(uname)" = "Darwin" ]; then
+    MAC=true
+else
+    if [ -e /etc/arch-release ]; then
+        ARCH=true
+    else
+        if [ -e /etc/debian_version ]; then
+            DEBIAN=true
+        fi
+    fi
+fi
+
+if $ARCH; then
+    alias get="$SUDO pacman -S"
+    alias agu="$SUDO pacman -Syu"
+    alias acs="$SUDO pacman -Ss"
+fi
+if $DEBIAN; then
+    alias get="$SUDO apt-get install"
+    alias agu="$SUDO apt-get update; $SUDO apt-get upgrade; $SUDO apt-get dist-upgrade"
+    alias acs="apt-cache search"
+fi
+if $MAC; then
+    alias get="brew install"
+    alias agu="brew update && brew upgrade"
+    alias acs="brew search"
+
+    # Mac UNIX utils aren't GNU
+    export LS_OPTS="-h -G"
+    export TREE_OPTS="-Ch"
+else
+    export LS_OPTS="-I '*.pyc' -h --color=auto --group-directories-first"
+    export TREE_OPTS="-I '*.pyc' -Ch --filelimit 20"
+fi
+
+
+alias apres="$SUDO apache2ctl restart"
+alias cd=cdls
+alias cmi="$SUDO date && ./configure \$CONF && make && make test && $SUDO make install && make clean && date"
+alias histc="rm -rf ~/.lesshst ~/.histfile ~/.viminfo ~/.mysql_history ~/.zcompdump ~/.bash_history ~/.DS_Store ~/.Xauthority ~/.cache ~/.sqlite_history"
+alias ll='ls -lA' # long listing, + hidden
+alias ls="ls $LS_OPTS"
+alias pu='phpunit --verbose --colors'
+alias rc='vim ~/.zshrc && source ~/.zshrc'
+alias so="source ~/.zshrc"
+alias tailf="tail -fn0"
+alias tree="tree $TREE_OPTS"
