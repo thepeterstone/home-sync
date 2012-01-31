@@ -46,6 +46,11 @@ $__history - %(!.%{[1;31m%}#%{[0;39m%}.%%) "
 }
 setPrompt
 
+logCommand()
+{
+    ~/bin/log_command.sh
+}
+
 # recursive grep
 # Usage: rg <search term> [extension]
 rg() {
@@ -66,34 +71,70 @@ mmas () {
     sudo $(history|tail -1|sed "s/ [0-9][0-9]*[ *] //")
 }
 
-### Options and aliases
 export EDITOR=vim
 export TERM=xterm-256color
-
-# ls opts: size, color when to a term
-export LS_OPTS="-I '*.pyc' -h --color=auto --group-directories-first"
-alias ll='ls -lA' # long listing, + hidden
-alias ls="ls $LS_OPTS"
-
 # tree opts: ignore pyc, color, size, skip big directories
-export TREE_OPTS="-I '*.pyc' -Ch --filelimit 20"
-alias tree="tree $TREE_OPTS"
-
-#### OS- or distribution-dependent...
-ARCH=[ -e /etc/arch-release ]
-DEBIAN=[ -e /etc/debian_version ]
-MAC=[ "$(uname)" -eq "Darwin" ]
 
 #### User-dependent
-if [ "$USER" -eq "root" ]; then
+SUDO='sudo'
+if [ "$USER" = "root" ]; then
     SUDO=''
-else
-    SUDO='sudo'
 fi
 
+# Apache sites
+es () {
+    $SUDO vim /etc/apache2/sites-available/$1.terst.org && $SUDO apache2ctl restart
+}
+ns () {
+    $SUDO vim /etc/apache2/sites-available/$1.terst.org +":0r /etc/apache2/sites-available/template" +":%s/DEFAULT/$1/g"
+    if [ $? -eq 0 ]; then
+        $SUDO mkdir -p /workspace/sites/$1.terst.org/docroot
+        $SUDO ln -s /workspace/sites/$1.terst.org /var/www/htdocs/$1.terst.org
+        $SUDO a2ensite $1.terst.org
+        $SUDO apache2ctl restart
+        echo "http://$1.terst.org/ is active."
+    else
+        echo "cancelled...."
+    fi
+}
+# xkcd.com/149
+mmas ()
+{
+    echo "What? Make it yourself."
+    echo "-> $SUDO $(history|tail -1|sed "s/ [0-9][0-9][0-9][0-9][ *] //")"
+    echo "Ok."
+    $SUDO $(history|tail -1|sed "s/ [0-9][0-9][0-9][0-9][ *] //")
+}
+tlog () {
+    if [ -z "$1" ]; then
+        tail -fn0 "/var/log/apache2/*"
+    else
+        tail -fn0 /var/log/apache2/{$1.access,error,rewrite}.log
+    fi
+}
+cdls () {
+    \cd $1
+    # interpolating LS_OPTS at runtime is weird...
+    ls -thG | head -3 | sed 's/^/    /'
+}
 
-alias cmi="$SUDO date && ./configure $CONF && make && make test && $SUDO make install && make clean && date"
-alias apres="$SUDO apache2ctl restart"
+
+#### OS- or distribution-dependent...
+ARCH=false
+DEBIAN=false
+MAC=false
+
+if [ "$(uname)" = "Darwin" ]; then
+    MAC=true
+else
+    if [ -e /etc/arch-release ]; then
+        ARCH=true
+    else
+        if [ -e /etc/debian_version ]; then
+            DEBIAN=true
+        fi
+    fi
+fi
 
 if $ARCH; then
     alias get="$SUDO pacman -S"
@@ -109,52 +150,24 @@ if $MAC; then
     alias get="brew install"
     alias agu="brew update && brew upgrade"
     alias acs="brew search"
+
+    # Mac UNIX utils aren't GNU
+    export LS_OPTS="-h -G"
+    export TREE_OPTS="-Ch"
+else
+    export LS_OPTS="-I '*.pyc' -h --color=auto --group-directories-first"
+    export TREE_OPTS="-I '*.pyc' -Ch --filelimit 20"
 fi
 
-ns () {
-    $SUDO vim /etc/apache2/sites-available/$1.terst.org +":0r /etc/apache2/sites-available/template" +":%s/DEFAULT/$1/g"
-    if [ $? -eq 0 ]; then
-        $SUDO mkdir -p /workspace/sites/$1.terst.org/docroot
-        $SUDO ln -s /workspace/sites/$1.terst.org /var/www/htdocs/$1.terst.org
-        $SUDO a2ensite $1.terst.org
-        $SUDO apache2ctl restart
-        echo "http://$1.terst.org/ is active."
-    else
-        echo "cancelled...."
-    fi
-}
-es () {
-    $SUDO vim /etc/apache2/sites-available/$1.terst.org && $SUDO apache2ctl restart
-}
-# xkcd.com/149
-mmas ()
-{
-    echo "What? Make it yourself."
-    echo "-> $SUDO $(history|tail -1|sed "s/ [0-9][0-9][0-9][0-9][ *] //")"
-    echo "Ok."
-    $SUDO $(history|tail -1|sed "s/ [0-9][0-9][0-9][0-9][ *] //")
-}
 
-# update this config and reload
+alias apres="$SUDO apache2ctl restart"
+alias cd=cdls
+alias cmi="$SUDO date && ./configure \$CONF && make && make test && $SUDO make install && make clean && date"
+alias histc="rm -rf ~/.lesshst ~/.histfile ~/.viminfo ~/.mysql_history ~/.zcompdump ~/.bash_history ~/.DS_Store ~/.Xauthority ~/.cache ~/.sqlite_history"
+alias ll='ls -lA' # long listing, + hidden
+alias ls="ls $LS_OPTS"
+alias pu='phpunit --verbose --colors'
 alias rc='vim ~/.zshrc && source ~/.zshrc'
 alias so="source ~/.zshrc"
-
-alias histc="rm -rf ~/.lesshst ~/.histfile ~/.viminfo ~/.mysql_history ~/.zcompdump ~/.bash_history ~/.DS_Store ~/.Xauthority ~/.cache ~/.sqlite_history"
-
-
-# Development
 alias tailf="tail -fn0"
-tlog ()
-{
-    if [ -z "$1" ]
-    then
-        tail -fn0 "/var/log/apache2/*"
-    else
-        tail -fn0 /var/log/apache2/{$1.access,error,rewrite}.log
-    fi
-}
-cdls () {
-    \cd $1
-    ls -t --color=always | head -3 | sed 's/^/\t/'
-}
-alias cd=cdls
+alias tree="tree $TREE_OPTS"
