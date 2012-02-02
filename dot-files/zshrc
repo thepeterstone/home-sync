@@ -29,7 +29,7 @@ ZSH_THEME="terst"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git svn)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -75,6 +75,8 @@ cdls () {
     # interpolating LS_OPTS at runtime is weird...
     ls -thG | head -3 | sed 's/^/    /'
 }
+
+[ -e ~/.zshrc-local ] && source ~/.zshrc-local
 
 
 #### OS- or distribution-dependent...
@@ -125,7 +127,10 @@ alias histc="rm -rf ~/.lesshst ~/.histfile ~/.viminfo ~/.mysql_history ~/.zcompd
 alias ll='ls -lA' # long listing, + hidden
 alias ls="ls $LS_OPTS"
 alias pu='phpunit --verbose --colors'
+alias p='clear;phpunit --verbose --colors --coverage-text=._phpcov . && cat ._phpcov;rm ._phpcoe'
 alias rc='vim ~/.zshrc && source ~/.zshrc'
 alias so="source ~/.zshrc"
 alias tailf="tail -fn0"
 alias tree="tree $TREE_OPTS"
+
+export PATH="$HOME/bin:$PATH"

@@ -1,4 +1,11 @@
-
+# ---------
+# terst theme for ZSH
+#
+# Features:
+#   - pwd with combined svn/git status display
+#   - user info: name, is_root, ssh connection
+#   - exit status indicator
+# ---------
 function my_git_prompt() {
   tester=$(git rev-parse --git-dir 2> /dev/null) || return
   
@@ -34,7 +41,14 @@ function my_git_prompt() {
     STATUS=" $STATUS"
   fi
 
-  echo " $ZSH_THEME_GIT_PROMPT_PREFIX$(my_current_branch)$STATUS$ZSH_THEME_GIT_PROMPT_SUFFIX"
+  echo "$(my_current_branch)$STATUS"
+}
+
+function my_repo_status() {
+  STATUS="$(svn_prompt_info)$(my_git_prompt)"
+  if [[ -n $STATUS ]]; then
+    echo " $ZSH_THEME_GIT_PROMPT_PREFIX$STATUS$ZSH_THEME_GIT_PROMPT_SUFFIX"
+  fi
 }
 
 function my_current_branch() {
@@ -43,7 +57,7 @@ function my_current_branch() {
 
 function ssh_connection() {
   if [[ -n $SSH_CONNECTION ]]; then
-    echo "%{$fg_bold[red]%}(ssh) "
+    echo " %{$fg_bold[red]%}(ssh)"
   fi
 }
 
@@ -51,11 +65,11 @@ local return_code="%(?.%{$fg_bold[green]%}✔.%{$fg_bold[red]%}✗)%{$reset_colo
 local hostname="%(!.%{$fg_bold[red]%}.%{$fg_bold[green]%}%n@)%m%{$reset_color%}"
 local hash="%(!.%{$fg[red]%}.)%#"
 
-PROMPT=$'[%T]$(ssh_connection) %{$hostname%}$(my_git_prompt) : %~\n%{$return_code%} %{$hash%} '
+PROMPT=$'[%T]$(ssh_connection) %{$hostname%}$(my_repo_status) : %~\n%{$return_code%} %{$hash%} '
 
 ZSH_THEME_PROMPT_RETURNCODE_PREFIX="%{$fg_bold[red]%}"
-ZSH_THEME_GIT_PROMPT_PREFIX=" $fg[white]‹ %{$fg_bold[yellow]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX=" $fg[white]›%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="$fg_bold[white]‹ %{$fg_bold[yellow]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX=" $fg_bold[white]›%{$reset_color%}"
 
 ZSH_THEME_GIT_PROMPT_ADDED="%{$fg[green]%}✚"
 ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg_bold[magenta]%}↑"
@@ -67,3 +81,5 @@ ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg_bold[red]%}✕"
 ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg_bold[red]%}●"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[white]%}●"
 
+
+ZSH_THEME_SVN_PROMPT_DIRTY="%{$fg_bold[red]%} ●"
