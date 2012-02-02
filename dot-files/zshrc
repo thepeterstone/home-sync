@@ -146,3 +146,10 @@ cdls () {
     ls -t --color=always | head -3 | sed 's/^/\t/'
 }
 alias cd=cdls
+hist () {
+    awk '{print $1 " " $2 }' <~/.histfile |
+    sort |
+    uniq -c |
+    sort -nr |
+    head
+}
