@@ -2,17 +2,22 @@
 	name = Peter Stone
 	email = thepeterstone@gmail.com
 
-
-[color]
-	interactive = always
-	ui = auto
-[grep]
-	lineNumber = true
-[rebase]
-	stat = true
+[core]
+  excludesfile = ~/.cvsignore
 
 [alias]
   ci = commit --verbose
   co = checkout
   st = status
   conflicts = ls-files --unmerged
+
+[color]
+	interactive = always
+	ui = auto
+
+[grep]
+	lineNumber = true
+
+[rebase]
+	stat = true
+
