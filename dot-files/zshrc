@@ -1,81 +1,39 @@
-# set up paths first
-path=($HOME/bin /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin .)
-cdpath=( $HOME/jump $HOME )
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
 
-# The following lines were added by compinstall
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="terst"
 
-zstyle ':completion:*' completer _expand _complete _ignored _approximate
-zstyle ':completion:*' expand suffix
-zstyle ':completion:*' file-sort name
-zstyle ':completion:*' format 'Completing %b%d%B . . .  '
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' list-suffixes true
-zstyle ':completion:*' max-errors 1
-zstyle ':completion:*' prompt '{ %e } '
-zstyle :compinstall filename '/home/peter/.zshrc'
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=5000
-SAVEHIST=10000
-setopt appendhistory autocd extendedglob
-bindkey -e
-# End of lines configured by zsh-newuser-install
+# Set to this to use case-sensitive completion
+# CASE_SENSITIVE="true"
 
-### Customized Settings
-setPrompt()
-{
-    # Example:
-    #   [10:12] peter@cherrywood:pts/1 [~] :)
-    #   !52 - %
-    #
-    # Colors:  [{attr};3{f};4{b}m - ;4{b} is optional
-    #   attr: 0: reset, 1: bold, 2: dim, 3: underline, 5: blink, 7: reverse, 8: hidden
-    #   f/b:  0: black, 1: red, 2: green, 3: yellow, 4: blue, 5: magenta, 6: cyan, 7: white, 9: reset
-    local __userString="%{[0;%(!.31.37)m%}%n@%{[1;37m%}%m%{[0;37m%}:%l%{[0;39m%}"
-    local __lastCommand="%(?.:).%{[1;31m%}%?%{[0;39m%})"
-    local __pwd="%{[1;34m%}%~%{[0;39m%}"
-    local __history="!%{[0;33m%]%!%{[0;39m%}"
-    PS1="[%T] $__userString [$__pwd] $__lastCommand
-$__history - %(!.%{[1;31m%}#%{[0;39m%}.%%) "
+# Comment this out to disable weekly auto-update checks
+# DISABLE_AUTO_UPDATE="true"
 
-}
-setPrompt
+# Uncomment following line if you want to disable colors in ls
+# DISABLE_LS_COLORS="true"
 
-logCommand()
-{
-    ~/bin/log_command.sh
-}
+# Uncomment following line if you want to disable autosetting terminal title.
+# DISABLE_AUTO_TITLE="true"
 
-# recursive grep
-# Usage: rg <search term> [extension]
-rg() {
-    if [ -z "$2" ]
-    then
-        myExt='php'
-    else
-        myExt="$2"
-    fi
-    find . -name "*.$myExt" -exec grep -In "$1" "{}" \; -print
-}
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+# COMPLETION_WAITING_DOTS="true"
 
-# xkcd.com/149
-mmas () {
-    echo "What? Make it yourself."
-    echo "-> sudo $(history|tail -1|awk '{ $1="";print }')"
-    echo "Ok."
-    sudo $(history|tail -1|awk '{ $1="";print }')
-}
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(git svn)
 
-export EDITOR=vim
-export TERM=xterm-256color
-# tree opts: ignore pyc, color, size, skip big directories
+source $ZSH/oh-my-zsh.sh
 
-#### User-dependent
+# Customize to your needs...
 SUDO='sudo'
 if [ "$USER" = "root" ]; then
     SUDO=''
@@ -101,9 +59,9 @@ ns () {
 mmas ()
 {
     echo "What? Make it yourself."
-    echo "-> $SUDO $(history|tail -1|sed "s/ [0-9][0-9][0-9][0-9][ *] //")"
+    echo "-> $SUDO $(history|tail -1|awk '{$1="";print}')"
     echo "Ok."
-    $SUDO $(history|tail -1|sed "s/ [0-9][0-9][0-9][0-9][ *] //")
+    $SUDO $(history|tail -1|awk '{$1="";print}')
 }
 tlog () {
     if [ -z "$1" ]; then
@@ -117,6 +75,8 @@ cdls () {
     # interpolating LS_OPTS at runtime is weird...
     ls -thG | head -3 | sed 's/^/    /'
 }
+
+[ -e ~/.zshrc-local ] && source ~/.zshrc-local
 
 
 #### OS- or distribution-dependent...
@@ -167,7 +127,10 @@ alias histc="rm -rf ~/.lesshst ~/.histfile ~/.viminfo ~/.mysql_history ~/.zcompd
 alias ll='ls -lA' # long listing, + hidden
 alias ls="ls $LS_OPTS"
 alias pu='phpunit --verbose --colors'
+alias p='clear;phpunit --verbose --colors --coverage-text=._phpcov . && cat ._phpcov;rm ._phpcoe'
 alias rc='vim ~/.zshrc && source ~/.zshrc'
 alias so="source ~/.zshrc"
 alias tailf="tail -fn0"
 alias tree="tree $TREE_OPTS"
+
+export PATH="$HOME/bin:$PATH"
