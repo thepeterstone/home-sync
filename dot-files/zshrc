@@ -127,7 +127,7 @@ alias histc="rm -rf ~/.lesshst ~/.histfile ~/.viminfo ~/.mysql_history ~/.zcompd
 alias ll='ls -lA' # long listing, + hidden
 alias ls="ls $LS_OPTS"
 alias pu='phpunit --verbose --colors'
-alias p='clear;phpunit --verbose --colors --coverage-text=._phpcov . && cat ._phpcov;rm ._phpcoe'
+alias p='clear;phpunit --verbose --colors --coverage-text=._phpcov . && cat ._phpcov;rm ._phpcov'
 alias rc='vim ~/.zshrc && source ~/.zshrc'
 alias so="source ~/.zshrc"
 alias tailf="tail -fn0"
