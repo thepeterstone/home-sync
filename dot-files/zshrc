@@ -135,3 +135,4 @@ alias tailf="tail -fn0"
 alias tree="tree $TREE_OPTS"
 
 export PATH="$HOME/bin:$PATH"
+[ -d $HOME/pear/bin ] && export PATH="$PATH:$HOME/pear/bin"
