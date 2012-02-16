@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# stackoverflow.com/questions/593724
+if [ "$0" -a "$1" ]; then
+ gdb -p $1 -x $0.gdb
+else
+ echo Must specify PID of process to silence >&2
+fi
