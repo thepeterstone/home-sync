@@ -78,8 +78,8 @@ ZSH_THEME_GIT_PROMPT_MODIFIED="%{$fg[blue]%}✹"
 ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg[magenta]%}➜"
 ZSH_THEME_GIT_PROMPT_STAGED="%{$fg_bold[green]%}●"
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg_bold[red]%}✕"
-ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg_bold[red]%}●"
+ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg[red]%}●"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[white]%}●"
 
 
-ZSH_THEME_SVN_PROMPT_DIRTY="%{$fg_bold[red]%} ●"
+ZSH_THEME_SVN_PROMPT_DIRTY="%{$fg[red]%} ●"

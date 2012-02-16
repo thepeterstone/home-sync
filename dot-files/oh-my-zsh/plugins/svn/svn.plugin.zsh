@@ -1,4 +1,4 @@
-svn=$(which svn)
+svn=/usr/bin/svn
 function svn_prompt_info {
     if [ $(in_svn) ]; then
         echo "$ZSH_PROMPT_BASE_COLOR$ZSH_THEME_SVN_PROMPT_PREFIX\
