@@ -10,9 +10,10 @@ main() {
         backupAndReplace $file
     done
 
-    if [ -z "$(grep 'added by home-sync' ~/.zshrc)" ]; then
-      echo "export PATH=\"\$PATH:$ROOT/bin\" # added by home-sync" >> ~/.zshrc
-      echo "~/.zsrhc updated - source it to apply changes."
+    shellrc="zshrc"
+    if [ -z "$(grep 'added by home-sync' ~/.$shellrc)" ]; then
+      echo "export PATH=\"\$PATH:$ROOT/bin\" # added by home-sync" >> ~/.$shellrc
+      echo "Updating [0;32m$shellrc[0m..."
     fi
 }
 
