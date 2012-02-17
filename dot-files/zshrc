@@ -138,3 +138,4 @@ alias tree="tree $TREE_OPTS"
 
 export PATH="$HOME/bin:$PATH"
 [ -d $HOME/pear/bin ] && export PATH="$PATH:$HOME/pear/bin"
+export PATH="$PATH:/Users/peter/workspace/github/home-sync/bin" # added by home-sync
