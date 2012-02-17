@@ -35,7 +35,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export EDITOR=vim
-export PAGER=more
+export PAGER="less -R"
 SUDO='sudo'
 if [ "$USER" = "root" ]; then
     SUDO=''
