@@ -4,23 +4,51 @@
 ROOT=$(cd $(dirname $(dirname $0)); pwd)
 
 main() {
-    rm -rf $ROOT/backups; mkdir $ROOT/backups
+  #clear out our backups
+  rm -rf $ROOT/backups; mkdir $ROOT/backups
 
-    for file in $(ls $ROOT/dot-files); do
-        echo "Updating [0;32m$file[0m..."
-        backupAndReplace $file
-    done
+  # update the repo and load submodules
+  updateAndLoadSubmodules
 
-    if [ -z "$(grep 'added by home-sync' ~/.zshrc)" ]; then
-      echo "export PATH=\"\$PATH:$ROOT/bin\" # added by home-sync" >> ~/.zshrc
-      echo "~/.zsrhc updated - source it to apply changes."
-    fi
+  # replace our config files
+  for file in $(ls $ROOT/dot-files); do
+      echo "Updating [0;32m$file[0m..."
+      backupAndReplace $file
+  done
+
+  if [ -z "$(grep 'added by home-sync' ~/.zshrc)" ]; then
+    echo "export PATH=\"\$PATH:$ROOT/bin\" # added by home-sync" >> ~/.zshrc
+    echo "~/.zsrhc updated - source it to apply changes."
+  fi
+
+  # Check settings
+  verify
 }
 
 backupAndReplace() {
-    [ -e $HOME/.$1 ] && mv -f $HOME/.$1 $ROOT/backups/$1
-    # this needs to be forced because -e returns false for a dangling symlink
-    ln -sf $ROOT/dot-files/$1 $HOME/.$1
+  [ -e $HOME/.$1 ] && mv -f $HOME/.$1 $ROOT/backups/$1
+  # this needs to be forced because -e returns false for a dangling symlink
+  ln -sf $ROOT/dot-files/$1 $HOME/.$1
 }
+
+updateAndLoadSubmodules() {
+  which git >/dev/null
+  if [ 0 -ne "$?" ]; then
+    echo "Git doesn't appear to be installed, vim plugins won't be loaded"
+  else
+    cd $ROOT
+    git submodule init
+    git submodule update
+  fi
+}
+
+verify() {
+  which zsh >/dev/null && grep $USER /etc/passwd|grep bin/zsh >/dev/null 
+  if [ 0 -ne "$?" ]; then
+    echo "Zsh is not your shell, shell bindings won't work."
+  fi
+
+}
+
 
 main

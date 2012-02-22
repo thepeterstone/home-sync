@@ -18,6 +18,9 @@ set foldmethod=marker
 set foldlevel=10
 set hidden                      "Better buffer management
 
+" initialize pathogen
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
 
 """""""""""
 "Text Formatting
