@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # We're located in bin/
 ROOT=$(cd $(dirname $(dirname $0)); pwd)
@@ -7,8 +7,14 @@ main() {
     rm -rf $ROOT/backups; mkdir $ROOT/backups
 
     for file in $(ls $ROOT/dot-files); do
+        echo "Updating [0;32m$file[0m..."
         backupAndReplace $file
     done
+
+    if [ -z "$(grep 'added by home-sync' ~/.zshrc)" ]; then
+      echo "export PATH=\"\$PATH:$ROOT/bin\" # added by home-sync" >> ~/.zshrc
+      echo "~/.zsrhc updated - source it to apply changes."
+    fi
 }
 
 backupAndReplace() {
