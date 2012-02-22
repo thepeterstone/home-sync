@@ -43,3 +43,6 @@
 [submodule "dot-files/vim/bundle/command-t"]
 	path = dot-files/vim/bundle/command-t
 	url = git://git.wincent.com/command-t.git
+[submodule "dot-files/vim/bundle/CamelCaseMotion"]
+	path = dot-files/vim/bundle/CamelCaseMotion
+	url = git://github.com/bkad/CamelCaseMotion.git
