@@ -83,3 +83,4 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[white]%}●"
 
 
 ZSH_THEME_SVN_PROMPT_DIRTY="%{$fg[red]%} ●"
+ZSH_THEME_SVN_PROMPT_UPDATES="%{$fg[green]%} ●"
