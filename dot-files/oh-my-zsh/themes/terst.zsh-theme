@@ -8,7 +8,6 @@
 # ---------
 function my_git_prompt() {
   tester=$(git rev-parse --git-dir 2> /dev/null) || return
-  
   INDEX=$(git status --porcelain 2> /dev/null)
   STATUS=""
 
@@ -63,7 +62,7 @@ function ssh_connection() {
 
 local return_code="%(?.%{$fg_bold[green]%}✔.%{$fg_bold[red]%}✗)%{$reset_color%}"
 local hostname="%(!.%{$fg_bold[red]%}.%{$fg_bold[green]%}%n@)%m%{$reset_color%}"
-local hash="%(!.%{$fg[red]%}.)%#"
+local hash="%(!.%{$fg[red]%}.)%#%{$reset_color%}"
 
 PROMPT=$'[%T]$(ssh_connection) %{$hostname%}$(my_repo_status) : %~\n%{$return_code%} %{$hash%} '
 
