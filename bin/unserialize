@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+php -r "var_dump(unserialize('$1'));"
