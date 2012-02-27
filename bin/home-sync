@@ -12,8 +12,8 @@ main() {
 
   # replace our config files
   for file in $(ls $ROOT/dot-files); do
-      echo "Updating [0;32m$file[0m..."
-      backupAndReplace $file
+    echo "Updating [0;32m$file[0m..."
+    backupAndReplace $file
   done
 
   if [ -z "$(grep 'added by home-sync' ~/.zshrc)" ]; then
@@ -26,9 +26,18 @@ main() {
 }
 
 backupAndReplace() {
-  [ -e $HOME/.$1 ] && mv -f $HOME/.$1 $ROOT/backups/$1
-  # this needs to be forced because -e returns false for a dangling symlink
-  ln -sf $ROOT/dot-files/$1 $HOME/.$1
+  if [ -e $HOME/.$1 ]; then
+    DIFF=$(diff -q $HOME/.$1 $ROOT/dot-files/$1)
+    if [ $DIFF ]; then
+      echo "Updating [0;32m$1[0m..."
+      mv $HOME/.$1 $ROOT/backups/$1
+      ln -s $ROOT/dot-files/$1 $HOME/.$1
+    fi
+  else
+    # this needs to be forced because -e returns false for a dangling symlink
+    echo "Adding [0;32m$1[0m..."
+    ln -sf $ROOT/dot-files/$1 $HOME/.$1
+  fi
 }
 
 updateAndLoadSubmodules() {
