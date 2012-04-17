@@ -52,7 +52,7 @@ updateAndLoadSubmodules() {
 }
 
 verify() {
-  which zsh >/dev/null && grep $USER /etc/passwd|grep bin/zsh >/dev/null 
+  which zsh >/dev/null && finger $USER|grep bin/zsh >/dev/null 
   if [ 0 -ne "$?" ]; then
     echo "Zsh is not your shell, shell bindings won't work."
   fi
