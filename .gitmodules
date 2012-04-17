@@ -1,48 +1,45 @@
 [submodule "dot-files/vim/bundle/fugitive"]
 	path = dot-files/vim/bundle/fugitive
-	url = git://github.com/tpope/vim-fugitive.git
+	url = https://github.com/tpope/vim-fugitive.git
 [submodule "dot-files/vim/bundle/PIV"]
 	path = dot-files/vim/bundle/PIV
-	url = git://github.com/spf13/PIV.git
+	url = https://github.com/spf13/PIV.git
 [submodule "dot-files/vim/bundle/neocomplcache"]
 	path = dot-files/vim/bundle/neocomplcache
-	url = git://github.com/Shougo/neocomplcache.git
+	url = https://github.com/Shougo/neocomplcache.git
 [submodule "dot-files/vim/bundle/phpcomplete.vim"]
 	path = dot-files/vim/bundle/phpcomplete.vim
-	url = git://github.com/shawncplus/phpcomplete.vim.git
+	url = https://github.com/shawncplus/phpcomplete.vim.git
 [submodule "dot-files/vim/bundle/nerdtree"]
 	path = dot-files/vim/bundle/nerdtree
-	url = git://github.com/scrooloose/nerdtree.git
+	url = https://github.com/scrooloose/nerdtree.git
 [submodule "dot-files/vim/bundle/minibufexpl.vim"]
 	path = dot-files/vim/bundle/minibufexpl.vim
-	url = git://github.com/vim-scripts/minibufexpl.vim.git
+	url = https://github.com/vim-scripts/minibufexpl.vim.git
 [submodule "dot-files/vim/bundle/jsbeautify"]
 	path = dot-files/vim/bundle/jsbeautify
-	url = git://github.com/vim-scripts/jsbeautify.git
+	url = https://github.com/vim-scripts/jsbeautify.git
 [submodule "dot-files/vim/bundle/SearchComplete"]
 	path = dot-files/vim/bundle/SearchComplete
-	url = git://github.com/vim-scripts/SearchComplete.git
+	url = https://github.com/vim-scripts/SearchComplete.git
 [submodule "dot-files/vim/bundle/Source-Explorer-srcexpl.vim"]
 	path = dot-files/vim/bundle/Source-Explorer-srcexpl.vim
-	url = git://github.com/vim-scripts/Source-Explorer-srcexpl.vim.git
+	url = https://github.com/vim-scripts/Source-Explorer-srcexpl.vim.git
 [submodule "dot-files/vim/bundle/tagbar"]
 	path = dot-files/vim/bundle/tagbar
-	url = git://github.com/majutsushi/tagbar.git
+	url = https://github.com/majutsushi/tagbar.git
 [submodule "dot-files/vim/bundle/supertab"]
 	path = dot-files/vim/bundle/supertab
-	url = git://github.com/ervandew/supertab.git
+	url = https://github.com/ervandew/supertab.git
 [submodule "dot-files/vim/bundle/vim-pathogen"]
 	path = dot-files/vim/bundle/vim-pathogen
-	url = git://github.com/tpope/vim-pathogen.git
+	url = https://github.com/tpope/vim-pathogen.git
 [submodule "dot-files/vim/bundle/vcscommand"]
 	path = dot-files/vim/bundle/vcscommand
-	url = git://repo.or.cz/vcscommand.git
+	url = https://repo.or.cz/vcscommand.git
 [submodule "dot-files/vim/bundle/vim-colors-solarized"]
 	path = dot-files/vim/bundle/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
+	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "dot-files/vim/bundle/command-t"]
 	path = dot-files/vim/bundle/command-t
-	url = git://git.wincent.com/command-t.git
-[submodule "dot-files/vim/bundle/CamelCaseMotion"]
-	path = dot-files/vim/bundle/CamelCaseMotion
-	url = git://github.com/bkad/CamelCaseMotion.git
+	url = https://git.wincent.com/command-t.git
