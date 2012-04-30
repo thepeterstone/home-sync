@@ -33,6 +33,7 @@ plugins=(git svn)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+unsetopt autocd
 export EDITOR=vim
 export TERM=xterm-256color
 export PAGER="less -R"
