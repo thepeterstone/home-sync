@@ -143,7 +143,7 @@ alias rcl='vim ~/.zshrc-local && source ~/.zshrc-local'
 alias so="source ~/.zshrc"
 alias tailf="tail -fn0"
 alias tree="tree $TREE_OPTS"
+alias curl="curl -L"
 
-export PATH="$HOME/bin:$PATH"
 [ -d $HOME/pear/bin ] && export PATH="$PATH:$HOME/pear/bin" && alias pear="$SUDO pear"
-export PATH="$PATH:/Users/pstone/code/home-sync/bin" # added by home-sync
+export PATH="$HOME/bin:$HOME/code/home-sync/bin:$PATH" # added by home-sync
