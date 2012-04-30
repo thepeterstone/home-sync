@@ -131,6 +131,10 @@ hist () {
     sort -nr |
     head
 }
+rcd () {
+    cd `realpath $1`
+}
+
 alias cmi="$SUDO date && ./configure \$CONF && make && make test && $SUDO make install && make clean && date"
 alias histc="rm -rf ~/.lesshst ~/.histfile ~/.viminfo ~/.mysql_history ~/.zcompdump ~/.bash_history ~/.DS_Store ~/.Xauthority ~/.cache ~/.sqlite_history"
 alias ll='ls -lA' # long listing, + hidden
