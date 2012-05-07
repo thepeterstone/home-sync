@@ -64,7 +64,7 @@ local return_code="%(?.%{$fg_bold[green]%}✔.%{$fg_bold[red]%}✗)%{$reset_colo
 local hostname="%(!.%{$fg_bold[red]%}.%{$fg_bold[green]%}%n@)%m%{$reset_color%}"
 local hash="%(!.%{$fg[red]%}.)%#%{$reset_color%}"
 
-PROMPT=$'[%T]$(ssh_connection) %{$hostname%}$(my_repo_status) : %~\n%{$return_code%} %{$hash%} '
+PROMPT=$'[%T]$(ssh_connection) %{$hostname%} : %~\n%{$return_code%} %{$hash%} '
 
 ZSH_THEME_PROMPT_RETURNCODE_PREFIX="%{$fg_bold[red]%}"
 ZSH_THEME_GIT_PROMPT_PREFIX="$fg_bold[white]‹ %{$fg_bold[yellow]%}"
@@ -81,5 +81,5 @@ ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg[red]%}●"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[white]%}●"
 
 
-ZSH_THEME_SVN_PROMPT_DIRTY="%{$fg[red]%} ●"
-ZSH_THEME_SVN_PROMPT_UPDATES="%{$fg[green]%} ●"
+ZSH_THEME_SVN_PROMPT_DIRTY="%{$fg[green]%} ●"
+ZSH_THEME_SVN_PROMPT_UPDATES="%{$fg[red]%} ●"

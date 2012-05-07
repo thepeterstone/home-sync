@@ -16,10 +16,10 @@ main() {
     backupAndReplace $file
   done
 
-  if [ -z "$(grep 'added by home-sync' ~/.zshrc)" ]; then
-    echo "export PATH=\"\$PATH:$ROOT/bin\" # added by home-sync" >> ~/.zshrc
-    echo "~/.zsrhc updated - source it to apply changes."
-  fi
+  #if [ -z "$(grep 'added by home-sync' ~/.zshrc)" ]; then
+  #  echo "export PATH=\"\$HOME/bin:$ROOT/bin:\$PATH\" # added by home-sync" >> ~/.zshrc
+  #  echo "~/.zsrhc updated - source it to apply changes."
+  #fi
 
   # Check settings
   verify
@@ -52,7 +52,7 @@ updateAndLoadSubmodules() {
 }
 
 verify() {
-  which zsh >/dev/null && grep $USER /etc/passwd|grep bin/zsh >/dev/null 
+  which zsh >/dev/null && finger $USER|grep bin/zsh >/dev/null 
   if [ 0 -ne "$?" ]; then
     echo "Zsh is not your shell, shell bindings won't work."
   fi

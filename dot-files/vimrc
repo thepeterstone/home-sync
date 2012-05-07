@@ -37,7 +37,7 @@ set showmatch             "Blink to show the {} and () matches
 set matchtime=2           "make it a quick blink though
 set formatoptions=cq2lt   "Do some neat comment stuff for us
 syntax on                 "Do Syntax highlighting 
-set relativenumber        "Show line numbers
+set number                "Show line numbers
 set pastetoggle=<F9>
 
 """"""""""""

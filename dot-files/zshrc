@@ -33,6 +33,7 @@ plugins=(git svn)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+unsetopt autocd
 export EDITOR=vim
 export TERM=xterm-256color
 export PAGER="less -R"
@@ -131,6 +132,10 @@ hist () {
     sort -nr |
     head
 }
+rcd () {
+    cd `realpath $1`
+}
+
 alias cmi="$SUDO date && ./configure \$CONF && make && make test && $SUDO make install && make clean && date"
 alias histc="rm -rf ~/.lesshst ~/.histfile ~/.viminfo ~/.mysql_history ~/.zcompdump ~/.bash_history ~/.DS_Store ~/.Xauthority ~/.cache ~/.sqlite_history"
 alias ll='ls -lA' # long listing, + hidden
@@ -142,9 +147,9 @@ alias rcl='vim ~/.zshrc-local && source ~/.zshrc-local'
 alias so="source ~/.zshrc"
 alias tailf="tail -fn0"
 alias tree="tree $TREE_OPTS"
+alias curl="curl -L"
 
 # homebrew puts things is /usr/local/bin, make sure that's before /usr/bin
 export PATH="/usr/local/bin:$PATH"
-export PATH="$HOME/bin:$PATH"
 [ -d $HOME/pear/bin ] && export PATH="$PATH:$HOME/pear/bin" && alias pear="$SUDO pear"
-export PATH="$PATH:/Users/pstone/code/home-sync/bin" # added by home-sync
+export PATH="$HOME/bin:$HOME/code/home-sync/bin:$PATH" # added by home-sync
