@@ -143,6 +143,8 @@ alias so="source ~/.zshrc"
 alias tailf="tail -fn0"
 alias tree="tree $TREE_OPTS"
 
+# homebrew puts things is /usr/local/bin, make sure that's before /usr/bin
+export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 [ -d $HOME/pear/bin ] && export PATH="$PATH:$HOME/pear/bin" && alias pear="$SUDO pear"
 export PATH="$PATH:/Users/pstone/code/home-sync/bin" # added by home-sync
