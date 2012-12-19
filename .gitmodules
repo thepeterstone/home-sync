@@ -36,10 +36,13 @@
 	url = https://github.com/tpope/vim-pathogen.git
 [submodule "dot-files/vim/bundle/vcscommand"]
 	path = dot-files/vim/bundle/vcscommand
-	url = https://repo.or.cz/vcscommand.git
+	url = https://github.com/vim-scripts/vcscommand.vim.git
 [submodule "dot-files/vim/bundle/vim-colors-solarized"]
 	path = dot-files/vim/bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "dot-files/vim/bundle/command-t"]
 	path = dot-files/vim/bundle/command-t
 	url = https://git.wincent.com/command-t.git
+[submodule "dot-files/vim/bundle/tagexplorer"]
+	path = dot-files/vim/bundle/tagexplorer
+	url = https://github.com/vim-scripts/tagexplorer.vim.git
