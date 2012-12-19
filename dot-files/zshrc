@@ -28,7 +28,7 @@ ZSH_THEME="terst"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git svn)
+plugins=(apache2-macports brew git github gpg-agent osx pyton ssh-agent svn)
 
 source $ZSH/oh-my-zsh.sh
 
