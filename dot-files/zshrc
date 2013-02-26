@@ -28,7 +28,7 @@ DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git svn)
+plugins=(apache2-macports brew git github gpg-agent osx pyton ssh-agent svn)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -160,5 +160,7 @@ alias tailf="tail -fn0"
 alias tree="tree $TREE_OPTS"
 alias curl="curl -L"
 
+# homebrew puts things is /usr/local/bin, make sure that's before /usr/bin
+export PATH="/usr/local/bin:$PATH"
 [ -d $HOME/pear/bin ] && export PATH="$PATH:$HOME/pear/bin" && alias pear="$SUDO pear"
 export PATH="$HOME/bin:$HOME/code/home-sync/bin:$PATH" # added by home-sync
