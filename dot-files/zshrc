@@ -135,6 +135,17 @@ hist () {
 rcd () {
     cd `realpath $1`
 }
+tarcp () {
+  ARG1=$(realpath $1)
+  DIR=${ARG1%/*}
+  TARGET=${ARG1##*/}
+
+  TEMP=($(echo $2 | tr ':' ' '))
+  HOST=${TEMP[1]}
+  DEST=${TEMP[2]}
+
+  (\cd $DIR; tar czf - $TARGET | ssh $HOST "(cd $DEST; tar xzvf -)")
+}
 
 alias cmi="$SUDO date && ./configure \$CONF && make && make test && $SUDO make install && make clean && date"
 alias histc="rm -rf ~/.lesshst ~/.histfile ~/.viminfo ~/.mysql_history ~/.zcompdump ~/.bash_history ~/.DS_Store ~/.Xauthority ~/.cache ~/.sqlite_history"
