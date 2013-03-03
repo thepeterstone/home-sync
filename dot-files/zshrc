@@ -44,19 +44,24 @@ fi
 
 # Apache sites
 es () {
+    # TODO: figure out autocomplete and drop terst.org bits
     $SUDO vim /etc/apache2/sites-available/$1.terst.org && $SUDO apache2ctl restart
 }
 ns () {
-    $SUDO vim /etc/apache2/sites-available/$1.terst.org +":0r /etc/apache2/sites-available/template" +":%s/DEFAULT/$1/g"
+    TLD=$(_find_tld)
+    $SUDO vim /etc/apache2/sites-available/$1$TLD +":0r /etc/apache2/sites-available/template" +":%s/DEFAULT/$1/g"
     if [ $? -eq 0 ]; then
-        $SUDO mkdir -p /workspace/sites/$1.terst.org/docroot
-        $SUDO ln -s /workspace/sites/$1.terst.org /var/www/htdocs/$1.terst.org
-        $SUDO a2ensite $1.terst.org
+        $SUDO mkdir -p /workspace/sites/$1$TLD/docroot
+        $SUDO ln -s /workspace/sites/$1$TLD /var/www/htdocs/$1$TLD
+        $SUDO a2ensite $1$TLD
         $SUDO apache2ctl restart
-        echo "http://$1.terst.org/ is active."
+        echo "http://$1$TLD/ is active."
     else
         echo "cancelled...."
     fi
+}
+_find_tld () {
+    echo "terst.org"
 }
 # xkcd.com/149
 mmas ()
