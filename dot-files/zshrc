@@ -14,7 +14,7 @@ ZSH_THEME="terst"
 # CASE_SENSITIVE="true"
 
 # Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
@@ -139,6 +139,17 @@ hist () {
 }
 rcd () {
     cd `realpath $1`
+}
+tarcp () {
+  ARG1=$(realpath $1)
+  DIR=${ARG1%/*}
+  TARGET=${ARG1##*/}
+
+  TEMP=($(echo $2 | tr ':' ' '))
+  HOST=${TEMP[1]}
+  DEST=${TEMP[2]}
+
+  (\cd $DIR; tar czf - $TARGET | ssh $HOST "(cd $DEST; tar xzvf -)")
 }
 
 alias cmi="$SUDO date && ./configure \$CONF && make && make test && $SUDO make install && make clean && date"
