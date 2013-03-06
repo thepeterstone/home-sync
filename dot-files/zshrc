@@ -28,7 +28,7 @@ DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git svn)
+plugins=(apache2-macports brew git github gpg-agent osx pyton ssh-agent svn)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -44,19 +44,24 @@ fi
 
 # Apache sites
 es () {
+    # TODO: figure out autocomplete and drop terst.org bits
     $SUDO vim /etc/apache2/sites-available/$1.terst.org && $SUDO apache2ctl restart
 }
 ns () {
-    $SUDO vim /etc/apache2/sites-available/$1.terst.org +":0r /etc/apache2/sites-available/template" +":%s/DEFAULT/$1/g"
+    TLD=$(_find_tld)
+    $SUDO vim /etc/apache2/sites-available/$1$TLD +":0r /etc/apache2/sites-available/template" +":%s/DEFAULT/$1/g"
     if [ $? -eq 0 ]; then
-        $SUDO mkdir -p /workspace/sites/$1.terst.org/docroot
-        $SUDO ln -s /workspace/sites/$1.terst.org /var/www/htdocs/$1.terst.org
-        $SUDO a2ensite $1.terst.org
+        $SUDO mkdir -p /workspace/sites/$1$TLD/docroot
+        $SUDO ln -s /workspace/sites/$1$TLD /var/www/htdocs/$1$TLD
+        $SUDO a2ensite $1$TLD
         $SUDO apache2ctl restart
-        echo "http://$1.terst.org/ is active."
+        echo "http://$1$TLD/ is active."
     else
         echo "cancelled...."
     fi
+}
+_find_tld () {
+    echo "terst.org"
 }
 # xkcd.com/149
 mmas ()
@@ -135,12 +140,24 @@ hist () {
 rcd () {
     cd `realpath $1`
 }
+tarcp () {
+  ARG1=$(realpath $1)
+  DIR=${ARG1%/*}
+  TARGET=${ARG1##*/}
+
+  TEMP=($(echo $2 | tr ':' ' '))
+  HOST=${TEMP[1]}
+  DEST=${TEMP[2]}
+
+  (\cd $DIR; tar czf - $TARGET | ssh $HOST "(cd $DEST; tar xzvf -)")
+}
 
 alias cmi="$SUDO date && ./configure \$CONF && make && make test && $SUDO make install && make clean && date"
 alias histc="rm -rf ~/.lesshst ~/.histfile ~/.viminfo ~/.mysql_history ~/.zcompdump ~/.bash_history ~/.DS_Store ~/.Xauthority ~/.cache ~/.sqlite_history"
 alias ll='ls -lA' # long listing, + hidden
 alias ls="ls $LS_OPTS"
 alias pu='phpunit --verbose --colors'
+alias composer='php $HOME/bin/composer.phar'
 alias p='clear;phpunit --verbose --colors --coverage-text=._phpcov . && cat ._phpcov;rm ._phpcov'
 alias rc='vim ~/.zshrc && source ~/.zshrc'
 alias rcl='vim ~/.zshrc-local && source ~/.zshrc-local'
@@ -149,5 +166,7 @@ alias tailf="tail -fn0"
 alias tree="tree $TREE_OPTS"
 alias curl="curl -L"
 
+# homebrew puts things is /usr/local/bin, make sure that's before /usr/bin
+export PATH="/usr/local/bin:$PATH"
 [ -d $HOME/pear/bin ] && export PATH="$PATH:$HOME/pear/bin" && alias pear="$SUDO pear"
 export PATH="$HOME/bin:$HOME/code/home-sync/bin:$PATH" # added by home-sync
