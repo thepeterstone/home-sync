@@ -43,3 +43,6 @@
 [submodule "dot-files/vim/bundle/command-t"]
 	path = dot-files/vim/bundle/command-t
 	url = https://git.wincent.com/command-t.git
+[submodule "dot-files/vim/bundle/VimClojure"]
+	path = dot-files/vim/bundle/VimClojure
+	url = https://github.com/vim-scripts/VimClojure
