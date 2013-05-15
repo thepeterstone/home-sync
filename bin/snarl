@@ -1,0 +1,9 @@
+#!/bin/bash
+REPLY="$1"
+LOGFILE="$2"
+
+if $(echo $REPLY | growlnotify -t $(basename $LOGFILE) --image /Users/pstone/code/popcap/bottlecap.png -w); then
+  echo "$REPLY"
+else
+  open $LOGFILE
+fi

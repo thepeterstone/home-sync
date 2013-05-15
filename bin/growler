@@ -1,0 +1,7 @@
+#!/bin/sh
+LOGFILE=$1
+
+
+tail -n1 -F $LOGFILE | while read; do # | awk '{$1=$2=$3=""; print}' | sed 's/^ *//' | while read; do
+  snarl "$REPLY" "$LOGFILE" &
+done
