@@ -167,6 +167,6 @@ alias tree="tree $TREE_OPTS"
 alias curl="curl -L"
 
 # homebrew puts things is /usr/local/bin, make sure that's before /usr/bin
-export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 [ -d $HOME/pear/bin ] && export PATH="$PATH:$HOME/pear/bin" && alias pear="$SUDO pear"
 export PATH="$HOME/bin:$HOME/code/home-sync/bin:$PATH" # added by home-sync
