@@ -44,7 +44,7 @@ function my_git_prompt() {
 }
 
 function my_repo_status() {
-  STATUS="$(svn_prompt_info)$(my_git_prompt)"
+  STATUS="$(my_git_prompt)"
   if [[ -n $STATUS ]]; then
     echo " $ZSH_THEME_GIT_PROMPT_PREFIX$STATUS$ZSH_THEME_GIT_PROMPT_SUFFIX"
   fi
