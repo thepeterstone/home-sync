@@ -15,7 +15,7 @@ set titleold=Terminal           "Get rid of that stupid flying message
 
 set foldenable                  "Use folding
 set foldmethod=marker
-set foldlevel=10
+set foldlevel=0
 set hidden                      "Better buffer management
 
 " initialize pathogen

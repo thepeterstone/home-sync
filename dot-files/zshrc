@@ -166,6 +166,11 @@ alias tailf="tail -fn0"
 alias tree="tree $TREE_OPTS"
 alias curl="curl -L"
 
+function svnp() {
+  \svn $@ | ~/workspace/github/sauce/output
+}
+alias svn=svnp
+
 # homebrew puts things is /usr/local/bin, make sure that's before /usr/bin
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 [ -d $HOME/pear/bin ] && export PATH="$PATH:$HOME/pear/bin" && alias pear="$SUDO pear"
