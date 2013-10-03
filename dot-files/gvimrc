@@ -52,6 +52,7 @@ set guioptions-=T
 
 " Default gui color scheme
 color ir_black
+set guifont=Source\ Code\ Pro\ ExtraLight:h15
 
 " ConqueTerm wrapper
 function StartTerm()
