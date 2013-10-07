@@ -13,9 +13,6 @@
 [submodule "dot-files/vim/bundle/nerdtree"]
 	path = dot-files/vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "dot-files/vim/bundle/minibufexpl.vim"]
-	path = dot-files/vim/bundle/minibufexpl.vim
-	url = https://github.com/vim-scripts/minibufexpl.vim.git
 [submodule "dot-files/vim/bundle/jsbeautify"]
 	path = dot-files/vim/bundle/jsbeautify
 	url = https://github.com/vim-scripts/jsbeautify.git
