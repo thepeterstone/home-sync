@@ -51,7 +51,9 @@ endif
 set guioptions-=T
 
 " Default gui color scheme
-color ir_black
+color burnout
+hi Normal ctermbg=None
+set guifont=Source\ Code\ Pro\ ExtraLight:h16
 
 " ConqueTerm wrapper
 function StartTerm()
