@@ -87,7 +87,7 @@ let g:SuperTabLongestEnhanced = 1
 nmap <C-g> :TagbarToggle<CR>
 
 "TagExplorer
-"nmap <silent> <C-m> :TagExplorer<CR> 
+"nmap <silent> <C-m> :TagExplorer<CR>
 
 " toggle NERD_tree (requires NERDTree.vim)
 nmap <silent> <C-f> :NERDTreeToggle <CR>
