@@ -232,6 +232,11 @@ if has("autocmd")
       au BufRead profile,bashrc,.profile,.bashrc,.bash_*,.kshrc,*.sh,*.ksh,*.bash,*.env,.login,.cshrc,*.csh,*.tcsh,.z*,zsh*,zlog* set formatoptions=croq sm sw=4 sts=4 cindent cinkeys='0{,0},!^F,o,O,e'
   augroup END
 
+  " Clojure
+  augroup clojure
+    au BufRead *.clj map <Leader>w <Esc>:w<CR> | map <Leader>wr :w<CR>:!lein run | map <Leader>t :new +r!lein\ run<CR>
+  augroup END
+
 
   " Also, support editing of gzip-compressed files. 
   " This is also used when loading compressed helpfiles, if you have any.
