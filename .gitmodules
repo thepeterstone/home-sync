@@ -13,9 +13,6 @@
 [submodule "dot-files/vim/bundle/nerdtree"]
 	path = dot-files/vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "dot-files/vim/bundle/minibufexpl.vim"]
-	path = dot-files/vim/bundle/minibufexpl.vim
-	url = https://github.com/vim-scripts/minibufexpl.vim.git
 [submodule "dot-files/vim/bundle/jsbeautify"]
 	path = dot-files/vim/bundle/jsbeautify
 	url = https://github.com/vim-scripts/jsbeautify.git
@@ -36,25 +33,19 @@
 	url = https://github.com/tpope/vim-pathogen.git
 [submodule "dot-files/vim/bundle/vcscommand"]
 	path = dot-files/vim/bundle/vcscommand
-	url = https://github.com/vim-scripts/vcscommand.vim.git
+	url = git://github.com/vim-scripts/vcscommand.vim
 [submodule "dot-files/vim/bundle/vim-colors-solarized"]
 	path = dot-files/vim/bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "dot-files/vim/bundle/command-t"]
 	path = dot-files/vim/bundle/command-t
 	url = https://git.wincent.com/command-t.git
-[submodule "dot-files/vim/bundle/VimClojure"]
-	path = dot-files/vim/bundle/VimClojure
-	url = https://github.com/vim-scripts/VimClojure
 [submodule "dot-files/vim/bundle/tagexplorer"]
 	path = dot-files/vim/bundle/tagexplorer
 	url = https://github.com/vim-scripts/tagexplorer.vim.git
 [submodule "dot-files/vim/bundle/vim-fireplace"]
 	path = dot-files/vim/bundle/vim-fireplace
 	url = git://github.com/tpope/vim-fireplace.git
-[submodule "dot-files/vim/bundle/vim-classpath"]
-	path = dot-files/vim/bundle/vim-classpath
-	url = git://github.com/tpope/vim-classpath.git
 [submodule "dot-files/vim/bundle/vim-clojure-static"]
 	path = dot-files/vim/bundle/vim-clojure-static
 	url = git://github.com/guns/vim-clojure-static.git

@@ -15,7 +15,7 @@ set titleold=Terminal           "Get rid of that stupid flying message
 
 set foldenable                  "Use folding
 set foldmethod=marker
-set foldlevel=0
+set foldlevel=3
 set hidden                      "Better buffer management
 
 " initialize pathogen
@@ -65,7 +65,7 @@ set history=1000      " Number of history commands to remember
 
 """""""""""""""
 " Mappings
-let mapleader = "`"
+let mapleader = ","
 
 "use ^c for Esc, except in normal mode 
 map <C-c> <Esc>
@@ -74,14 +74,13 @@ nmap <C-c> :cq<CR>
 
 " SuperTab (requires supertab.vim)
 let g:SuperTabefaultCompletionType = "context"
-let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 function! MyTagContext()
   if filereadable(expand('%:p:h') . '/tags')
     return "\<c-x>\<c-]>"
   endif
 endfunction
 let g:SuperTabCompletionContexts = ['MyTagContext', 's:ContextText', 's:ContextDiscover']
-let g:SuperTabNoCompleteAfter = [ '\s', '{', ',' ]
+let g:SuperTabNoCompleteAfter = [ '\s', '{', ',', '^' ]
 let g:SuperTabLongestEnhanced = 1
 
 " tagbar (requires tagbar.vim)
@@ -131,7 +130,7 @@ endfunction
 nmap <silent> <C-x> :!./% <CR>
 
 " Readme headings
-imap <Leader><CR> <Esc>YpVr=o<CR>
+imap \<CR> <Esc>YpVr=o<CR>
 
 " Fat fingers?
 cmap W<CR> w<CR>
@@ -168,6 +167,8 @@ hi User1 ctermfg=green ctermbg=black
 hi User2 ctermfg=cyan ctermbg=black
 hi User3 ctermfg=yellow ctermbg=black
 hi User4 ctermfg=red ctermbg=black
+
+hi Normal ctermbg=None
 set shortmess=atI
 
 
