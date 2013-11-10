@@ -235,7 +235,7 @@ if has("autocmd")
 
   " Clojure
   augroup clojure
-    au BufRead *.clj map <Leader>w <Esc>:w<CR> | map <Leader>wr :w<CR>:!lein run | map <Leader>t :new +r!lein\ run<CR>
+    au BufRead *.clj map <Leader>w <Esc>:w<CR> | map <Leader>wr :w<CR>:!lein run<CR> | map <Leader>d :new +r!lein\ run<CR> | map <Leader>t :w<CR>:Eval (clojure.test/run-tests)<CR>
   augroup END
 
 
