@@ -84,8 +84,6 @@ cdls () {
     ls -thG | head -3 | sed 's/^/    /'
 }
 
-[ -e ~/.zshrc-local ] && source ~/.zshrc-local
-
 
 #### OS- or distribution-dependent...
 ARCH=false
@@ -175,3 +173,8 @@ alias svn=svnp
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 [ -d $HOME/pear/bin ] && export PATH="$PATH:$HOME/pear/bin" && alias pear="$SUDO pear"
 export PATH="$HOME/bin:$HOME/code/home-sync/bin:$PATH" # added by home-sync
+
+
+# load local overrides or extensions
+[ -e ~/.zshrc-local ] && source ~/.zshrc-local
+
