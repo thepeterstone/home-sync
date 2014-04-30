@@ -1,3 +1,8 @@
 backups
 
 bin/subl
+dot-files/vim/bundle/command-t/ruby/command-t/Makefile
+dot-files/vim/bundle/command-t/ruby/command-t/ext.bundle
+dot-files/vim/bundle/command-t/ruby/command-t/ext.o
+dot-files/vim/bundle/command-t/ruby/command-t/match.o
+dot-files/vim/bundle/command-t/ruby/command-t/matcher.o
