@@ -165,7 +165,11 @@ alias tree="tree $TREE_OPTS"
 alias curl="curl -L"
 
 function svnp() {
-  \svn $@ | ~/workspace/github/sauce/output
+  if [[ "$1" = "diff" ]]; then
+      \svn $@ | colordiff
+  else
+      \svn $@ | ~/workspace/github/sauce/output
+  fi
 }
 alias svn=svnp
 
