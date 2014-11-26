@@ -101,7 +101,7 @@ alias ls="ls $LS_OPTS"
 alias rc='vim ~/.zshrc && source ~/.zshrc'
 alias rcl='vim ~/.zshrc-local && source ~/.zshrc-local'
 alias so="source ~/.zshrc"
-alias tailf="tail -fn0"
+alias tailf="tail -Fn0"
 alias tree="tree $TREE_OPTS"
 alias curl="curl -L"
 
