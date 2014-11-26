@@ -1,0 +1,32 @@
+up() {
+	if [[ $(vagrant status|grep running) == "" ]]; then
+		vagrant up && vagrant ssh -- -t "$VAGRANT_OPTS" $@
+	else
+		vagrant ssh -- -t "$VAGRANT_OPTS" $@
+	fi
+}
+
+mysql() {
+	VAGRANT_OPTS="mysql -uroot -p$MYSQL_PASS $MYSQL_DEFAULT_DB" up
+}
+
+phing() {
+	VAGRANT_OPTS="phing -f /vagrant/orchestration/build.xml $@" up
+}
+
+rebuild() {
+	git stash --include-untracked --all && git pull --rebase && git stash apply && vagrant destroy -f && vagrant up && ./orchestration/update-hosts.sh && vagrant ssh -- phing -f /vagrant/orchestration/build.xml
+}
+
+help() {
+	local hilite="[1;36m"
+	local reset="[0;39m"
+	echo "Shell mode ${hilite}$SHELL_MODE${reset}. Available commands:"
+	echo "  ${hilite}mysql${reset} 	Bring up VM and run MySQL"
+	echo "  ${hilite}phing${reset} 	Run a given phing command in the VM"
+	echo "  ${hilite}rebuild${reset}	Rebase working copy against latest from origin, rebuild VM and run a full build"
+	echo "  ${hilite}up${reset} 		Bring up VM and SSH into it, with options"
+}
+
+# sublime: syntax 'Packages/ShellScript/Shell-Unix-Generic.tmLanguage'
+# vim: filetype=sh syntax=sh

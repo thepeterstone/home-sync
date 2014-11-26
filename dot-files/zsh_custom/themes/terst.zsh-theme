@@ -54,9 +54,18 @@ function my_current_branch() {
   echo $(current_branch || echo "(no branch)")
 }
 
-function ssh_connection() {
+function shell_mode() {
+  if [[ -n $SHELL_MODE ]]; then
+    echo "%{$fg[blue]%}[$SHELL_MODE]%{$reset_color%} "
+  fi
+}
+
+function my_hostname() {
+  local local_info="%(!.%{$fg[red]%}%n@%m %{$reset_color%}.)"
   if [[ -n $SSH_CONNECTION ]]; then
-    echo " %{$fg_bold[red]%}(ssh)"
+    echo "%{$fg[yellow]%}ssh:%(!.%{$local_info%}.%{$fg[white]%}%m %{$reset_color%})"
+    else
+    echo "%{$local_info%}"
   fi
 }
 
@@ -66,11 +75,12 @@ function shell_mode() {
   fi
 }
 
-local return_code="%(?.%{$fg_bold[green]%}✔.%{$fg_bold[red]%}✗)%{$reset_color%}"
 local hostname="%(!.%{$fg_bold[red]%}.%{$fg_bold[green]%}%n@)%m%{$reset_color%}"
+local return_code="%(?.%{$fg_bold[green]%}✔.%{$fg_bold[red]%}✗)%{$reset_color%}"
 local hash="%(!.%{$fg[red]%}.)%#%{$reset_color%}"
 
-PROMPT=$'\n%{$return_code%}[%T]$(ssh_connection) $(my_repo_status) %~\n%{$(iterm2_prompt_mark)%}$(shell_mode) %{$hash%} '
+#PROMPT=$'\n%{$return_code%}[%T]$(ssh_connection) $(my_repo_status) %~\n%{$(iterm2_prompt_mark)%}$(shell_mode) %{$hash%} '
+PROMPT=$'%{$return_code%} %T $(my_hostname)%~$(my_repo_status)\n$(shell_mode)%{$hash%} '
 
 ZSH_THEME_PROMPT_RETURNCODE_PREFIX="%{$fg_bold[red]%}"
 ZSH_THEME_GIT_PROMPT_PREFIX="$fg_bold[white]‹%{$fg_bold[yellow]%}"

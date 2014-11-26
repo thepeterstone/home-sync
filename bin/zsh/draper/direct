@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+ZDOTDIR=${0:h} zsh -i

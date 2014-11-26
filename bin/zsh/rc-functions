@@ -1,65 +1,104 @@
 # xkcd.com/149
 mmas ()
 {
-    echo "[0;34mWhat? Make it yourself.[0;39m"
-    echo "-> [1;31msudo[0;39m $(history|tail -1|sed "s/ [0-9][0-9][0-9][0-9][ *] //")"
-    echo "[0;34mOk.[0;39m"
-    sudo $(history|tail -1|sed "s/ [0-9][0-9][0-9][0-9][ *] //")
+	echo "[0;34mWhat? Make it yourself.[0;39m"
+	echo "-> [1;31msudo[0;39m $(history|tail -1|sed "s/ [0-9][0-9][0-9][0-9][ *] //")"
+	echo "[0;34mOk.[0;39m"
+	sudo $(history|tail -1|sed "s/ [0-9][0-9][0-9][0-9][ *] //")
 }
 
 nmapf ()
 {
-    sudo nmap -sV -O -sS -T4 -PN -vv -oX $1.nmap.xml -p- $1
+	sudo nmap -sV -O -sS -T4 -PN -vv -oX $1.nmap.xml -p- $1
 }
 
 setPrompt()
 {
-    # Example:
-    #   [10:12] peter@cherrywood:pts/1 [~] :)
-    #   !52 - %
-    #
-    # Colors:  [{attr};3{f};4{b}m - ;4{b} is optional
-    #   attr: 0: reset, 1: bold, 2: dim, 3: underline, 5: blink, 7: reverse, 8: hidden
-    #   f/b:  0: black, 1: red, 2: green, 3: yellow, 4: blue, 5: magenta, 6: cyan, 7: white, 9: reset
-    local __userString="%{[0;%(!.31.37)m%}%n@%{[1;37m%}%m%{[0;37m%}:%l%{[0;39m%}"
-    local __lastCommand="%(?.:).%{[1;31m%}%?%{[0;39m%})"
-    local __pwd="%{[1;34m%}%~%{[0;39m%}"
-    local __history="!%{[0;33m%]%!%{[0;39m%}"
-    PS1="[%T] $__userString [$__pwd] $__lastCommand
+# Colors:  [{attr};3{f};4{b}m - ;4{b} is optional
+#   attr: 0: reset, 1: bold, 2: dim, 3: underline, 5: blink, 7: reverse, 8: hidden
+#   f/b:  0: black, 1: red, 2: green, 3: yellow, 4: blue, 5: magenta, 6: cyan, 7: white, 9: reset
+local __userString="%{[0;%(!.31.37)m%}%n@%{[1;37m%}%m%{[0;37m%}:%l%{[0;39m%}"
+local __lastCommand="%(?.:).%{[1;31m%}%?%{[0;39m%})"
+local __pwd="%{[1;34m%}%~%{[0;39m%}"
+local __history="!%{[0;33m%]%!%{[0;39m%}"
+PS1="[%T] $__userString [$__pwd] $__lastCommand
 $__history - %(!.%{[1;31m%}#%{[0;39m%}.%%) "
 
 }
 
 # recursive grep
 rg() {
-    # Usage: rg <search term> [extension]
-    if [ -z "$2" ]
-    then
-        myExt='php'
-    else
-        myExt="$2"
-    fi
-    find . -name "*.$myExt" -exec grep -In "$1" "{}" \; -print
+# Usage: rg <search term> [extension]
+if [ -z "$2" ]
+	then
+	myExt='php'
+else
+	myExt="$2"
+fi
+find . -name "*.$myExt" -exec grep -In "$1" "{}" \; -print
 }
 
 screentitle() {
-    echo -ne '\ek'$1'\e\\'
+	echo -ne '\ek'$1'\e\\'
 }
 
 stash()
 {
-    if [ ''="$HOME_HOST" ]; then
-        echo 'Set $HOME_HOST (and set up ~/.ssh/config accordingly) and try again.'
-    fi
-    COMMAND=`builtin history -1 | awk '{ $1=""; print }'`;
-    DESTFILE='docroot/s/history';
-    echo "$COMMAND # $@" | ssh -t $SSH_HOST "cat >>$DESTFILE -"
+	if [ ''="$HOME_HOST" ]; then
+		echo 'Set $HOME_HOST (and set up ~/.ssh/config accordingly) and try again.'
+	fi
+	COMMAND=`builtin history -1 | awk '{ $1=""; print }'`;
+	DESTFILE='docroot/s/history';
+	echo "$COMMAND # $@" | ssh -t $SSH_HOST "cat >>$DESTFILE -"
 }
 
 what() {
-    ls -l $1
-    stat $1
-    file $1
+	ls -l $1
+	stat $1
+	file $1
 }
 
-wiki() { dig +short txt $1.wp.dg.cx; }
+# Modal shell
+function mode()
+{
+	local target=/Users/pstone/workspace/home-sync/bin/zsh/$1
+	if [ -d $target ]; then
+		ZDOTDIR=$target zsh -i
+	else
+		echo "No such mode '$1'"
+		return 1
+	fi
+
+}
+
+
+
+
+
+# terst commands - move to rcl?
+# Apache sites
+es () {
+	# TODO: figure out autocomplete
+	TLD=$(_find_tld)
+	$SUDO vim /etc/apache2/sites-available/$1.$TLD && $SUDO apache2ctl restart
+}
+ns () {
+	TLD=$(_find_tld)
+	$SUDO vim /etc/apache2/sites-available/$1$TLD +":0r /etc/apache2/sites-available/template" +":%s/DEFAULT/$1/g"
+	if [ $? -eq 0 ]; then
+		$SUDO mkdir -p /workspace/sites/$1$TLD/docroot
+		$SUDO ln -s /workspace/sites/$1$TLD /var/www/htdocs/$1$TLD
+		$SUDO a2ensite $1$TLD
+		$SUDO apache2ctl restart
+		echo "http://$1$TLD/ is active."
+	else
+		echo "cancelled...."
+	fi
+}
+_find_tld () {
+	echo "terst.org"
+}
+
+
+# sublime: syntax 'Packages/ShellScript/Shell-Unix-Generic.tmLanguage'
+# vim: filetype=sh syntax=sh
