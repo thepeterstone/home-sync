@@ -16,7 +16,11 @@ set listchars=tab:▸\ ,eol:¬,trail:·
 
 set hidden                      "Better buffer management
 set nofoldenable                "Don't use folding
-set foldlevel=30
+set foldlevelstart=99
+set foldlevel=99
+let g:DisableAutoPHPFolding = 1 "Prevent PIV from auto-folding PHP files
+
+set hidden                      "Better buffer management
 
 " initialize pathogen
 runtime bundle/vim-pathogen/autoload/pathogen.vim
