@@ -113,8 +113,8 @@ export PATH="$HOME/bin:$HOME/code/home-sync/bin:$PATH" # added by home-sync
 # load local overrides or extensions
 [ -e ~/.zshrc-local ] && source ~/.zshrc-local
 
-
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# vim: filetype=sh syntax=sh
