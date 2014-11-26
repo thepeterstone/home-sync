@@ -92,6 +92,11 @@ function! Indent() range abort
 endfunction
 
 
+" vim-php-refactor plugin
+let g:php_refactor_command='php ~/workspace/home-sync/bin/php/refactor.phar'
+
+" Readme headings
+imap \<CR> <Esc>YpVr=o<CR>
 
 
 """""""""""""""
