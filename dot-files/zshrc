@@ -111,6 +111,9 @@ alias curl="curl -L"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="$HOME/bin:$HOME/code/home-sync/bin:$PATH" # added by home-sync
 
+# load functions
+source ~/workspace/home-sync/bin/zsh/rc-functions
+alias rcf='vim ~/workspace/home-sync/bin/zsh/rc-functions && source ~/workspace/home-sync/bin/zsh/rc-functions'
 
 # load local overrides or extensions
 [ -e ~/.zshrc-local ] && source ~/.zshrc-local
@@ -119,4 +122,5 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# sublime: syntax 'Packages/ShellScript/Shell-Unix-Generic.tmLanguage'
 # vim: filetype=sh syntax=sh
