@@ -27,6 +27,7 @@
   sta=stash
   sur="submodule update --init --recursive"
   unstage="reset HEAD"
+  pr = "!f() { git fetch $1 refs/pull-requests/$2/merge:pr-$2; git checkout pr-$2; } ; f"
 
 [color]
 	interactive = always
