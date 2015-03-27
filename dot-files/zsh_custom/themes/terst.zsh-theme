@@ -6,6 +6,11 @@
 #   - user info: name, is_root, ssh connection
 #   - exit status indicator
 # ---------
+#
+#
+#
+#
+
 function my_git_prompt() {
   tester=$(git rev-parse --git-dir 2> /dev/null) || return
   INDEX=$(git status --porcelain 2> /dev/null)
@@ -40,7 +45,7 @@ function my_git_prompt() {
     STATUS=" $STATUS"
   fi
 
-  echo "$(my_current_branch)$STATUS"
+  echo "ᚴ $(my_current_branch)$STATUS"
 }
 
 function my_repo_status() {
@@ -81,19 +86,20 @@ function my_modal_shell() {
   fi
 }
 
+#local hostname="%(!.%{$fg_bold[red]%}.%{$fg[black]%}%n@)%M"
 local hostname="%(!.%{$fg_bold[red]%}.%{$fg_bold[green]%}%n@)%m%{$reset_color%}"
-local return_code="%(?.%{$fg_bold[green]%}✔.%{$fg_bold[red]%}✗)%{$reset_color%}"
+local return_code="%{$reset_color%}%(?.%{$fg[green]%}✔.%{$fg_bold[red]%}✗)%{$reset_color%}"
 local hash="%(!.%{$fg[red]%}.)%#%{$reset_color%}"
 
 #PROMPT=$'\n%{$return_code%}[%T]$(ssh_connection) $(my_repo_status) %~\n%{$(iterm2_prompt_mark)%}$(shell_mode) %{$hash%} '
 #PROMPT=$'%{$return_code%} %T $(my_hostname)%~$(my_repo_status)\n$(shell_mode)%{$hash%} '
 #PROMPT=$'[%T]$(ssh_connection) %{$hostname%}$(my_repo_status) : %~\n%{$return_code%}$(my_modal_shell) %{$hash%} '
-PROMPT=$'[%T] %{$hostname%}$(my_repo_status) : %~\n%{$return_code%}$(my_modal_shell) %{$hash%} '
+#PROMPT=$'[%T] %{$hostname%}$(my_repo_status) : %~\n%{$return_code%}$(my_modal_shell) %{$hash%} '
+PROMPT=$'\n%{$SOLAR_GRAY_BG$SOLAR_ORANGE%} [%T] %{$hostname%} %{$bg[blue]$SOLAR_GRAY%}▶%{$SOLAR_WHITE%} %~ %{$RESET$SOLAR_YELLOW%} $(my_repo_status) \n%{$RESET%}%{$return_code%}$(my_modal_shell) %{$hash%} '
 
 ZSH_THEME_PROMPT_RETURNCODE_PREFIX="%{$fg_bold[red]%}"
 ZSH_THEME_GIT_PROMPT_PREFIX="$fg_bold[white]‹%{$fg_bold[yellow]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="$fg_bold[white]›%{$reset_color%}"
-
 ZSH_THEME_GIT_PROMPT_ADDED="%{$fg[green]%}✚"
 ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg_bold[magenta]%}↑"
 ZSH_THEME_GIT_PROMPT_DELETED="%{$fg[red]%}✖"
