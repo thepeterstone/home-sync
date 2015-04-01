@@ -35,29 +35,6 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 plugins=(brew git github macos ssh-agent wd)
 autoload -U compinit && compinit
 
-# Solarized Dark colorscheme
-BOLD="%{$(tput bold)%}"
-RESET="%{$(tput sgr0)%}"
-SOLAR_YELLOW="%{$(tput setaf 136)%}"
-SOLAR_YELLOW_BG="%{$(tput setab 136)%}"
-SOLAR_ORANGE="%{$(tput setaf 166)%}"
-SOLAR_ORANGE_BG="%{$(tput setab 166)%}"
-SOLAR_RED="%{$(tput setaf 124)%}"
-SOLAR_RED_BG="%{$(tput setab 124)%}"
-SOLAR_MAGENTA="%{$(tput setaf 125)%}"
-SOLAR_MAGENTA_BG="%{$(tput setab 125)%}"
-SOLAR_VIOLET="%{$(tput setaf 61)%}"
-SOLAR_VIOLET_BG="%{$(tput setab 61)%}"
-SOLAR_BLUE="%{$(tput setaf 33)%}"
-SOLAR_BLUE_BG="%{$(tput setab 33)%}"
-SOLAR_CYAN="%{$(tput setaf 37)%}"
-SOLAR_CYAN_BG="%{$(tput setab 37)%}"
-SOLAR_GREEN="%{$(tput setaf 64)%}"
-SOLAR_GREEN_BG="%{$(tput setab 64)%}"
-SOLAR_WHITE="%{$(tput setaf 254)%}"
-SOLAR_WHITE_BG="%{$(tput setab 254)%}"
-SOLAR_GRAY="%{$(tput setaf 238)%}"
-SOLAR_GRAY_BG="%{$(tput setab 238)%}"
 
 
 source $ZSH/oh-my-zsh.sh
@@ -150,5 +127,31 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Solarized Dark colorscheme
+BOLD="%{$(tput bold)%}"
+RESET="%{$(tput sgr0)%}"
+SOLAR_YELLOW="%{$(tput setaf 136)%}"
+SOLAR_YELLOW_BG="%{$(tput setab 136)%}"
+SOLAR_ORANGE="%{$(tput setaf 166)%}"
+SOLAR_ORANGE_BG="%{$(tput setab 166)%}"
+SOLAR_RED="%{$(tput setaf 124)%}"
+SOLAR_RED_BG="%{$(tput setab 124)%}"
+SOLAR_MAGENTA="%{$(tput setaf 125)%}"
+SOLAR_MAGENTA_BG="%{$(tput setab 125)%}"
+SOLAR_VIOLET="%{$(tput setaf 61)%}"
+SOLAR_VIOLET_BG="%{$(tput setab 61)%}"
+SOLAR_BLUE="%{$(tput setaf 33)%}"
+SOLAR_BLUE_BG="%{$(tput setab 33)%}"
+SOLAR_CYAN="%{$(tput setaf 37)%}"
+SOLAR_CYAN_BG="%{$(tput setab 37)%}"
+SOLAR_GREEN="%{$(tput setaf 64)%}"
+SOLAR_GREEN_BG="%{$(tput setab 64)%}"
+SOLAR_WHITE="%{$(tput setaf 254)%}"
+SOLAR_WHITE_BG="%{$(tput setab 254)%}"
+SOLAR_GRAY="%{$(tput setaf 238)%}"
+SOLAR_GRAY_BG="%{$(tput setab 238)%}"
+
+
 # sublime: syntax 'Packages/ShellScript/Shell-Unix-Generic.tmLanguage'
 # vim: filetype=sh syntax=sh
