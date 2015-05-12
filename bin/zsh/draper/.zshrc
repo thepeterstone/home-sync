@@ -9,7 +9,8 @@ source $ZDOTDIR/../vagrant/functions
 source $ZDOTDIR/functions
 
 export SHELL_MODE='draper'
-\cd ~/popcap/git/draper
+export draper=~/popcap/git/draper
+\cd $draper
 
 export MYSQL_PASS=popcapdev1
 export MYSQL_DEFAULT_DB=draper

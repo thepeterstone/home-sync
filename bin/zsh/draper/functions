@@ -6,6 +6,10 @@ phpunit-full() {
 	phpunit -c phpunit-full.xml $@
 }
 
+launch() {
+  vagrant up && $draper/orchestration/update-hosts.sh && phing update_schema && open "http://local.draper-admin.popcap.com"
+}
+
 logs() {
 	VAGRANT_OPTS="sudo tail -f /opt/popcap/draper/backend/current/data/logs/application.log /var/log/apache2/error.log" up
 }
@@ -15,6 +19,7 @@ help() {
 	local hilite="[1;36m"
 	local reset="[0;39m"
 	echo "Shell mode ${hilite}$SHELL_MODE${reset}. Available commands:"
+  echo "  ${hilite}launch${reset}   Bring up the VM, update /etc/hosts and open the admin in a browser"
 	echo "  ${hilite}logs${reset} 	Bring up VM and tail application/error logs"
 	echo "  ${hilite}mysql${reset} 	Bring up VM and run MySQL"
 	echo "  ${hilite}phing${reset} 	Run a given phing command in the VM"
