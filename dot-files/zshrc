@@ -7,39 +7,40 @@ ZSH_CUSTOM=$HOME/.zsh_custom
 # time that oh-my-zsh is loaded.
 ZSH_THEME="terst"
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
+# load zgen
+_root=$(\cd $ZSH; \cd `pwd -P`/../..; pwd -P)
+source "${_root}/lib/zgen/zgen.zsh"
 
-# Comment this out to enable weekly auto-update checks
-DISABLE_AUTO_UPDATE="false"
+# check if there's no init script
+if ! zgen saved; then
+    echo "Creating a zgen save"
 
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
+    zgen oh-my-zsh
 
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
+    # plugins
+    zgen oh-my-zsh plugins/git
+    zgen oh-my-zsh plugins/brew
+    zgen oh-my-zsh plugins/ssh-agent
+    zgen oh-my-zsh plugins/svn
+    zgen oh-my-zsh plugins/lein
+    zgen oh-my-zsh plugins/sudo
+    zgen oh-my-zsh plugins/command-not-found
+    zgen load zsh-users/zsh-syntax-highlighting
 
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-COMPLETION_WAITING_DOTS="true"
+    # completions
+    zgen load zsh-users/zsh-completions src
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-# plugins=(apache2-macports brew git github osx python ssh-agent svn)
-# plugins=(apache2-macports brew git github gpg-agent osx pyton ssh-agent svn)
-plugins=(brew git github macos ssh-agent wd)
-autoload -U compinit && compinit
+    # theses must be loaded AFTER zsh-syntax-highlighting
+    zgen oh-my-zsh plugins/history-substring-search
+    zgen load tarruda/zsh-autosuggestions
 
+    # theme
+    zgen oh-my-zsh themes/terst
 
-
-source $ZSH/oh-my-zsh.sh
-
-
+    # save all to init script
+    zgen save
+fi
 
 
 # Customize to your needs...
