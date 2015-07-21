@@ -42,6 +42,12 @@ if ! zgen saved; then
     zgen save
 fi
 
+# Enable autosuggestions automatically.
+zle-line-init() {
+    zle autosuggest-start
+}
+zle -N zle-line-init
+
 
 # Customize to your needs...
 unsetopt autocd
