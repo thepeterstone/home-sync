@@ -49,3 +49,9 @@
 [submodule "dot-files/vim/bundle/vim-clojure-static"]
 	path = dot-files/vim/bundle/vim-clojure-static
 	url = git://github.com/guns/vim-clojure-static.git
+[submodule "dot-files/vim/bundle/ctrlp.vim"]
+	path = dot-files/vim/bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule "dot-files/vim/bundle/vim-go.git"]
+	path = dot-files/vim/bundle/vim-go.git
+	url = https://github.com/fatih/vim-go.git
