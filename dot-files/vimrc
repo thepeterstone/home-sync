@@ -133,9 +133,9 @@ nmap <C-g> :TagbarToggle<CR>
 "nmap <silent> <C-m> :TagExplorer<CR>
 
 " toggle NERD_tree (requires NERDTree.vim)
-nmap <silent> <C-f> :NERDTreeToggle <CR>
-vmap <C-f> :NERDTreeToggle <CR>
-imap <C-f> <Esc>:NERDTreeToggle<CR>
+nmap <silent> <C-n> :NERDTreeToggle <CR>
+vmap <C-n> :NERDTreeToggle <CR>
+imap <C-n> <Esc>:NERDTreeToggle<CR>
 
 " Mini Buffer Explorer (requires minibufexpl.vim)
 let g:miniBufExplMapCTabSwitchBufs = 1 
@@ -204,6 +204,7 @@ colorscheme burnout
 "set statusline=%1*\ %f\ %2*%y\ %4*%r\ %m%=%3*%(<%c,%l/%L>%3p%%%)\ 
 let g:VCSCommanfEnableBufferSetup = 1
 set statusline=%<%f\ %{VCSCommandGetStatusLine()}\ %h%m%r%=%l,%c%V\ %P
+
 " file, type, readonly, modified, col, line/totlines,percent
 "makes use of the following colors with %N*
 hi User1 ctermfg=green ctermbg=black
@@ -211,6 +212,9 @@ hi User2 ctermfg=cyan ctermbg=black
 hi User3 ctermfg=yellow ctermbg=black
 hi User4 ctermfg=red ctermbg=black
 
+" invisible character colors
+highlight NonText ctermfg=239
+highlight SpecialKey ctermfg=239
 hi Normal ctermbg=None
 set shortmess=atI
 
