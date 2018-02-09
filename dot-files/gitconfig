@@ -6,10 +6,25 @@
   excludesfile = ~/.cvsignore
 
 [alias]
+  blog="log origin/master... --left-right"
+  br=branch
   ci = commit --verbose
   co = checkout
-  st = status
   conflicts = ls-files --unmerged
+  dc=diff --cached
+  di=diff
+  ds="diff --staged"
+  fixup="commit --fixup"
+  flog="log --pretty=fuller --decorate"
+  llog="log --date=local"
+  lol="log --graph --decorate --oneline"
+  lola="log --graph --decorate --oneline --all"
+  rum="rebase master@{u}"
+  squash="commit --squash"
+  st = status
+  sta=stash
+  sur="submodule update --init --recursive"
+  unstage="reset HEAD"
 
 [color]
 	interactive = always
