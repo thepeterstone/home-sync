@@ -55,3 +55,9 @@
 [submodule "dot-files/vim/bundle/vim-go.git"]
 	path = dot-files/vim/bundle/vim-go.git
 	url = https://github.com/fatih/vim-go.git
+[submodule "dot-files/vim/bundle/deoplete.nvim"]
+	path = dot-files/vim/bundle/deoplete.nvim
+	url = https://github.com/Shougo/deoplete.nvim.git
+[submodule "dot-files/vim/bundle/deoplete-go.vim"]
+	path = dot-files/vim/bundle/deoplete-go.vim
+	url = https://github.com/zchee/deoplete-go.git
