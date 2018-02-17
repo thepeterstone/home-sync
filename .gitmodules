@@ -4,21 +4,12 @@
 [submodule "dot-files/vim/bundle/PIV"]
 	path = dot-files/vim/bundle/PIV
 	url = https://github.com/spf13/PIV.git
-[submodule "dot-files/vim/bundle/neocomplcache"]
-	path = dot-files/vim/bundle/neocomplcache
-	url = https://github.com/Shougo/neocomplcache.git
-[submodule "dot-files/vim/bundle/phpcomplete.vim"]
-	path = dot-files/vim/bundle/phpcomplete.vim
-	url = https://github.com/shawncplus/phpcomplete.vim.git
 [submodule "dot-files/vim/bundle/nerdtree"]
 	path = dot-files/vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
 [submodule "dot-files/vim/bundle/jsbeautify"]
 	path = dot-files/vim/bundle/jsbeautify
 	url = https://github.com/vim-scripts/jsbeautify.git
-[submodule "dot-files/vim/bundle/SearchComplete"]
-	path = dot-files/vim/bundle/SearchComplete
-	url = https://github.com/vim-scripts/SearchComplete.git
 [submodule "dot-files/vim/bundle/Source-Explorer-srcexpl.vim"]
 	path = dot-files/vim/bundle/Source-Explorer-srcexpl.vim
 	url = https://github.com/vim-scripts/Source-Explorer-srcexpl.vim.git
@@ -37,12 +28,6 @@
 [submodule "dot-files/vim/bundle/vim-colors-solarized"]
 	path = dot-files/vim/bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
-[submodule "dot-files/vim/bundle/command-t"]
-	path = dot-files/vim/bundle/command-t
-	url = https://git.wincent.com/command-t.git
-[submodule "dot-files/vim/bundle/tagexplorer"]
-	path = dot-files/vim/bundle/tagexplorer
-	url = https://github.com/vim-scripts/tagexplorer.vim.git
 [submodule "dot-files/vim/bundle/vim-fireplace"]
 	path = dot-files/vim/bundle/vim-fireplace
 	url = git://github.com/tpope/vim-fireplace.git
@@ -55,9 +40,3 @@
 [submodule "dot-files/vim/bundle/vim-go.git"]
 	path = dot-files/vim/bundle/vim-go.git
 	url = https://github.com/fatih/vim-go.git
-[submodule "dot-files/vim/bundle/deoplete.nvim"]
-	path = dot-files/vim/bundle/deoplete.nvim
-	url = https://github.com/Shougo/deoplete.nvim.git
-[submodule "dot-files/vim/bundle/deoplete-go.vim"]
-	path = dot-files/vim/bundle/deoplete-go.vim
-	url = https://github.com/zchee/deoplete-go.git
