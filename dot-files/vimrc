@@ -50,19 +50,6 @@ set wildmenu              "use better tab-completion for commands
 set wildmode=list:longest
 
 """""""""""""""
-" History/swap stuff
-"
-" Two possibilities for swap syncing: if you get write
-" errors while editing, try the other one.
-" use 'fsync' for the unix hosts at UW
-"set swapsync=sync
-set swapsync=fsync
-set updatecount=20    " Number of characters typed before doing an update
-set updatetime=500    " Number of milliseconds before doing an update
-set history=1000      " Number of history commands to remember
-
-
-"""""""""""""""
 " Mappings
 let mapleader = ","
 
