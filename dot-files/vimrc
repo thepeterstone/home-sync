@@ -10,12 +10,13 @@ set visualbell t_vb=            "Don't ring any bells
 set mouse=a                     "Use the mouse in all modes
 
 set title                       "Let VIM manage the term title
-set titlestring=%t\ %y\ %r\ %m  "Set a useful term title            
+set titlestring=%t\ %y\ %r\ %m  "Set a useful term title
 set titleold=Terminal           "Get rid of that stupid flying message
+set listchars=tab:▸\ ,eol:¬,trail:·
 
+set hidden                      "Better buffer management
 set nofoldenable                "Don't use folding
 set foldlevel=30
-set hidden                      "Better buffer management
 
 " initialize pathogen
 runtime bundle/vim-pathogen/autoload/pathogen.vim
@@ -38,6 +39,7 @@ set formatoptions=cq2lt   "Do some neat comment stuff for us
 syntax on                 "Do Syntax highlighting 
 set number                "Show line numbers
 set pastetoggle=<F9>
+set list                  " show whitespace characters
 
 """"""""""""
 "Searching stuff
