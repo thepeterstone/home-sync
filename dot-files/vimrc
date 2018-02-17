@@ -204,6 +204,7 @@ hi User4 ctermfg=red ctermbg=black
 " invisible character colors
 highlight NonText ctermfg=239
 highlight SpecialKey ctermfg=239
+highlight Visual cterm=reverse ctermbg=NONE
 hi Normal ctermbg=None
 set shortmess=atI
 
