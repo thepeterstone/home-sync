@@ -42,27 +42,6 @@ if [ "$USER" = "root" ]; then
     SUDO=''
 fi
 
-# Apache sites
-es () {
-    # TODO: figure out autocomplete and drop terst.org bits
-    $SUDO vim /etc/apache2/sites-available/$1.terst.org && $SUDO apache2ctl restart
-}
-ns () {
-    TLD=$(_find_tld)
-    $SUDO vim /etc/apache2/sites-available/$1$TLD +":0r /etc/apache2/sites-available/template" +":%s/DEFAULT/$1/g"
-    if [ $? -eq 0 ]; then
-        $SUDO mkdir -p /workspace/sites/$1$TLD/docroot
-        $SUDO ln -s /workspace/sites/$1$TLD /var/www/htdocs/$1$TLD
-        $SUDO a2ensite $1$TLD
-        $SUDO apache2ctl restart
-        echo "http://$1$TLD/ is active."
-    else
-        echo "cancelled...."
-    fi
-}
-_find_tld () {
-    echo "terst.org"
-}
 # xkcd.com/149
 mmas ()
 {
@@ -154,24 +133,12 @@ alias cmi="$SUDO date && ./configure \$CONF && make && make test && $SUDO make i
 alias histc="rm -rf ~/.lesshst ~/.histfile ~/.viminfo ~/.mysql_history ~/.zcompdump ~/.bash_history ~/.DS_Store ~/.Xauthority ~/.cache ~/.sqlite_history"
 alias ll='ls -lA' # long listing, + hidden
 alias ls="ls $LS_OPTS"
-alias pu='phpunit --verbose --colors'
-alias composer='php $HOME/bin/composer.phar'
-alias p='clear;phpunit --verbose --colors --coverage-text=._phpcov . && cat ._phpcov;rm ._phpcov'
 alias rc='vim ~/.zshrc && source ~/.zshrc'
 alias rcl='vim ~/.zshrc-local && source ~/.zshrc-local'
 alias so="source ~/.zshrc"
 alias tailf="tail -fn0"
 alias tree="tree $TREE_OPTS"
 alias curl="curl -L"
-
-function svnp() {
-  if [[ "$1" = "diff" ]]; then
-      \svn $@ | colordiff
-  else
-      \svn $@ | ~/workspace/github/sauce/output
-  fi
-}
-alias svn=svnp
 
 # homebrew puts things is /usr/local/bin, make sure that's before /usr/bin
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
