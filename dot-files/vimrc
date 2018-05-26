@@ -60,13 +60,13 @@ map <C-c> <Esc>
 "use ^c to quit with an error code 
 nmap <C-c> :cq<CR>
 
+imap jj <Esc>
+
 " Fat fingers?
 cmap W<CR> w<CR>
 cmap W!<CR> w!<CR>
 cmap Q<CR> q<CR>
 cmap Q!<CR> q!<CR>
-cmap Q1<CR> q!<CR>
-cmap q1<CR> q!<CR>
 cmap Wq<CR> wq<CR>
 cmap WQ<CR> wq<CR>
 
@@ -155,7 +155,7 @@ let g:SuperTabLongestEnhanced = 1
 
 
 " tagbar.vim
-nmap <C-g> :TagbarToggle<CR>
+nmap <C-g> :TagbarOpenAutoClose<CR>
 
 
 " NERDTree.vim
