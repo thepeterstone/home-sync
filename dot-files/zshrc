@@ -51,13 +51,6 @@ mmas ()
     echo "Ok."
     $SUDO $(history|tail -1|awk '{$1="";print}')
 }
-tlog () {
-    if [ -z "$1" ]; then
-        tail -fn0 "/var/log/apache2/*"
-    else
-        tail -fn0 /var/log/apache2/{$1.access,error,rewrite}.log
-    fi
-}
 cdls () {
     \cd $1
     # interpolating LS_OPTS at runtime is weird...
@@ -66,37 +59,7 @@ cdls () {
 
 
 #### OS- or distribution-dependent...
-ARCH=false
-DEBIAN=false
-MAC=false
-
 if [ "$(uname)" = "Darwin" ]; then
-    MAC=true
-else
-    if [ -e /etc/arch-release ]; then
-        ARCH=true
-    else
-        if [ -e /etc/debian_version ]; then
-            DEBIAN=true
-        fi
-    fi
-fi
-
-if $ARCH; then
-    alias get="$SUDO pacman -S"
-    alias agu="$SUDO pacman -Syu"
-    alias acs="$SUDO pacman -Ss"
-fi
-if $DEBIAN; then
-    alias get="$SUDO apt-get install"
-    alias agu="$SUDO apt-get update; $SUDO apt-get upgrade; $SUDO apt-get dist-upgrade"
-    alias acs="apt-cache search"
-fi
-if $MAC; then
-    alias get="brew install"
-    alias agu="brew update && brew upgrade"
-    alias acs="brew search"
-
     # Mac UNIX utils aren't GNU
     export LS_OPTS="-h -G"
     export TREE_OPTS="-Ch"
@@ -106,8 +69,6 @@ else
 fi
 
 
-alias apres="$SUDO apache2ctl restart"
-alias cd=cdls
 hist () {
     awk '{print $1 " " $2 }' <~/.histfile |
     sort |
@@ -130,6 +91,7 @@ tarcp () {
   (\cd $DIR; tar czf - $TARGET | ssh $HOST "(cd $DEST; tar xzvf -)")
 }
 
+alias cd=cdls
 alias cmi="$SUDO date && ./configure \$CONF && make && make test && $SUDO make install && make clean && date"
 alias histc="rm -rf ~/.lesshst ~/.histfile ~/.viminfo ~/.mysql_history ~/.zcompdump ~/.bash_history ~/.DS_Store ~/.Xauthority ~/.cache ~/.sqlite_history"
 alias ll='ls -lA' # long listing, + hidden
