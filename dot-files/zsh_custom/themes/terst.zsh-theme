@@ -46,7 +46,7 @@ function my_git_prompt() {
 function my_repo_status() {
   STATUS="$(my_git_prompt)"
   if [[ -n $STATUS ]]; then
-    echo " $ZSH_THEME_GIT_PROMPT_PREFIX$STATUS$ZSH_THEME_GIT_PROMPT_SUFFIX"
+    echo "$ZSH_THEME_GIT_PROMPT_PREFIX$STATUS$ZSH_THEME_GIT_PROMPT_SUFFIX"
   fi
 }
 
@@ -60,15 +60,21 @@ function ssh_connection() {
   fi
 }
 
+function shell_mode() {
+  if [[ -n $SHELL_MODE ]]; then
+    echo " [%{$fg[blue]%}$SHELL_MODE%{$reset_color%}]"
+  fi
+}
+
 local return_code="%(?.%{$fg_bold[green]%}✔.%{$fg_bold[red]%}✗)%{$reset_color%}"
 local hostname="%(!.%{$fg_bold[red]%}.%{$fg_bold[green]%}%n@)%m%{$reset_color%}"
 local hash="%(!.%{$fg[red]%}.)%#%{$reset_color%}"
 
-PROMPT=$'[%T]$(ssh_connection) %{$hostname%}$(my_repo_status) : %~\n%{$return_code%} %{$SHELL_MODE%} %{$hash%} '
+PROMPT=$'\n%{$return_code%}[%T]$(ssh_connection) $(my_repo_status) %~\n%{$(iterm2_prompt_mark)%}$(shell_mode) %{$hash%} '
 
 ZSH_THEME_PROMPT_RETURNCODE_PREFIX="%{$fg_bold[red]%}"
-ZSH_THEME_GIT_PROMPT_PREFIX="$fg_bold[white]‹ %{$fg_bold[yellow]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX=" $fg_bold[white]›%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="$fg_bold[white]‹%{$fg_bold[yellow]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="$fg_bold[white]›%{$reset_color%}"
 
 ZSH_THEME_GIT_PROMPT_ADDED="%{$fg[green]%}✚"
 ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg_bold[magenta]%}↑"
