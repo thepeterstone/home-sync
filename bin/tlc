@@ -1,0 +1,28 @@
+#!/bin/bash
+set -euo pipefail
+
+pushd "$(git rev-parse --show-toplevel)"
+trap popd EXIT
+
+set -x
+# stash everything that's not staged
+git stash save -k -u "unstaged changes $(date +%s)"
+trap "git stash pop" EXIT
+
+# make sure we're up to date
+git pull --rebase --autostash
+
+# re-stage our changes (autostash unstaged them)
+git add -A
+
+# Run the tests
+./scripts/test.sh
+
+# Run the linters
+gometalinter ./... -s vendor --exclude="\bexported \w+ (\S*.*)([a-zA-Z.*]*) should have comment or be unexported\b" --exclude="\b\w+ (\S*.*)([a-zA-Z.*]*) should be\b" --exclude="\berror return value not checked \(defer .*\.Close\(\)\)" --exclude="\bTLS InsecureSkipVerify (.+) true\b" --exclude="\bPotential file inclusion via variable,MEDIUM,HIGH\b" --exclude="\bnot compatible with reflect.StructTag.Get: bad syntax for struct tag\b" src
+
+# Commit & push - drop to an editor for the commit message
+git ci
+git push
+
+
