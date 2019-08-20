@@ -19,6 +19,7 @@
   llog="log --date=local"
   lol="log --graph --decorate --oneline"
   lola="log --graph --decorate --oneline --all"
+  root = rev-parse --show-toplevel
   rum="rebase master@{u}"
   squash="commit --squash"
   st = status
