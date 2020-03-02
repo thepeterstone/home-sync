@@ -46,3 +46,6 @@
 [submodule "dot-files/zsh_custom/plugins/zsh-completions"]
 	path = dot-files/zsh_custom/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions
+[submodule "dot-files/zsh/liquidprompt"]
+	path = dot-files/zsh/liquidprompt
+	url = https://github.com/nojhan/liquidprompt.git
