@@ -6,3 +6,4 @@ tags
 *.sublime-workspace
 *.pyc
 *.log
+.idea
