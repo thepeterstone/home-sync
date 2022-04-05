@@ -24,16 +24,16 @@
 	url = https://github.com/tpope/vim-pathogen.git
 [submodule "dot-files/vim/bundle/vcscommand"]
 	path = dot-files/vim/bundle/vcscommand
-	url = git://github.com/vim-scripts/vcscommand.vim
+	url = https://github.com/vim-scripts/vcscommand.vim
 [submodule "dot-files/vim/bundle/vim-colors-solarized"]
 	path = dot-files/vim/bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "dot-files/vim/bundle/vim-fireplace"]
 	path = dot-files/vim/bundle/vim-fireplace
-	url = git://github.com/tpope/vim-fireplace.git
+	url = https://github.com/tpope/vim-fireplace.git
 [submodule "dot-files/vim/bundle/vim-clojure-static"]
 	path = dot-files/vim/bundle/vim-clojure-static
-	url = git://github.com/guns/vim-clojure-static.git
+	url = https://github.com/guns/vim-clojure-static.git
 [submodule "dot-files/vim/bundle/ctrlp.vim"]
 	path = dot-files/vim/bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim.git
