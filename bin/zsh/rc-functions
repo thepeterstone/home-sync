@@ -68,7 +68,7 @@ function mode()
 			echo "Shell mode: $SHELL_MODE"
 		fi
 	else
-		local target=/Users/pstone/workspace/home-sync/bin/zsh/$1
+		local target="${BASE_PATH:-$HOME/workspace/home-sync}/bin/zsh/$1"
 		if [ -d $target ]; then
 			ZDOTDIR="$target" zsh -i
 		else
