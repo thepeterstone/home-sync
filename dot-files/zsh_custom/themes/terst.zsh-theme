@@ -86,7 +86,12 @@ function my_modal_shell() {
   fi
 }
 
-#local hostname="%(!.%{$fg_bold[red]%}.%{$fg[black]%}%n@)%M"
+function shell_mode() {
+  if [[ -n $SHELL_MODE ]]; then
+    echo " [%{$fg[blue]%}$SHELL_MODE%{$reset_color%}]"
+  fi
+}
+
 local hostname="%(!.%{$fg_bold[red]%}.%{$fg_bold[green]%}%n@)%m%{$reset_color%}"
 local return_code="%{$reset_color%}%(?.%{$fg[green]%}✔.%{$fg_bold[red]%}✗)%{$reset_color%}"
 local hash="%(!.%{$fg[red]%}.)%#%{$reset_color%}"

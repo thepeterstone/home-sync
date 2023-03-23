@@ -95,10 +95,6 @@ function! Indent() range abort
     exec "normal " . savelnum . "G"
 endfunction
 
-
-" vim-php-refactor plugin
-let g:php_refactor_command='php ~/workspace/home-sync/bin/php/refactor.phar'
-
 " Readme headings
 imap \<CR> <Esc>YpVr=o<CR>
 

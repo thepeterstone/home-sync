@@ -7,6 +7,5 @@ tags
 *.pyc
 *.log
 .idea
-
 .envrc
 *~

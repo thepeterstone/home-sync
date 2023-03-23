@@ -37,15 +37,12 @@
 [submodule "dot-files/vim/bundle/ctrlp.vim"]
 	path = dot-files/vim/bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim.git
-[submodule "dot-files/vim/bundle/vim-go.git"]
-	path = dot-files/vim/bundle/vim-go.git
-	url = https://github.com/fatih/vim-go.git
-[submodule "dot-files/oh-my-zsh"]
-	path = dot-files/oh-my-zsh
-	url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule "dot-files/zsh_custom/plugins/zsh-completions"]
 	path = dot-files/zsh_custom/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions
 [submodule "dot-files/zsh/liquidprompt"]
 	path = dot-files/zsh/liquidprompt
 	url = https://github.com/nojhan/liquidprompt.git
+[submodule "dot-files/vim/bundle/ctrlp.vim"]
+	path = dot-files/vim/bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim.git
