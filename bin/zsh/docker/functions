@@ -1,0 +1,8 @@
+dosh() {
+  IMAGE=$(docker ps | grep "$1")
+  if [ -z "$IMAGE" ]; then
+    echo "No running container matches $IMAGE" >&2
+    exit 1
+  fi
+  docker exec -it $IMAGE bash
+}
