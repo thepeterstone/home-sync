@@ -3,7 +3,8 @@
 	email = thepeterstone@gmail.com
 
 [core]
-  excludesfile = ~/.cvsignore
+	excludesfile = $HOME/.cvsignore
+	autocrlf = input
 
 [alias]
   blog="log origin/master... --left-right"
@@ -28,6 +29,7 @@
   sur="submodule update --init --recursive"
   unstage="reset HEAD"
   pr = "!f() { git fetch $1 refs/pull-requests/$2/merge:pr-$2; git checkout pr-$2; } ; f"
+  prettylog =  log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
 
 [color]
 	interactive = always
