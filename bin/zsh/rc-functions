@@ -106,6 +106,12 @@ _find_tld () {
 	echo "terst.org"
 }
 
+function and() {
+  test $? -eq 0 && $*
+}
+function or() {
+  test $? -ne 0 && $*
+}
 
 # sublime: syntax 'Packages/ShellScript/Shell-Unix-Generic.tmLanguage'
 # vim: filetype=sh syntax=sh
