@@ -61,14 +61,21 @@ what() {
 # Modal shell
 function mode()
 {
-	local target=/Users/pstone/workspace/home-sync/bin/zsh/$1
-	if [ -d $target ]; then
-		ZDOTDIR=$target zsh -i
+	if [ -z "$1" ]; then
+		if [ -z "$SHELL_MODE" ]; then
+			echo "No mode active"
+		else
+			echo "Shell mode: $SHELL_MODE"
+		fi
 	else
-		echo "No such mode '$1'"
-		return 1
+		local target=/Users/pstone/workspace/home-sync/bin/zsh/$1
+		if [ -d $target ]; then
+			ZDOTDIR="$target" zsh -i
+		else
+			echo "No such mode '$1'"
+			return 1
+		fi
 	fi
-
 }
 
 
