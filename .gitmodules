@@ -43,3 +43,6 @@
 [submodule "dot-files/oh-my-zsh"]
 	path = dot-files/oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
+[submodule "dot-files/zsh_custom/plugins/zsh-completions"]
+	path = dot-files/zsh_custom/plugins/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions
