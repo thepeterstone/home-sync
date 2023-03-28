@@ -15,6 +15,7 @@
   di=diff
   ds="diff --staged"
   fixup="commit --fixup"
+  ff="pull --ff-only"
   flog="log --pretty=fuller --decorate"
   llog="log --date=local"
   lol="log --graph --decorate --oneline"
