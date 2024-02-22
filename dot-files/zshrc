@@ -107,7 +107,6 @@ alias curl="curl -L"
 
 # homebrew puts things is /usr/local/bin, make sure that's before /usr/bin
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-[ -d $HOME/pear/bin ] && export PATH="$PATH:$HOME/pear/bin" && alias pear="$SUDO pear"
 export PATH="$HOME/bin:$HOME/code/home-sync/bin:$PATH" # added by home-sync
 
 
@@ -117,3 +116,5 @@ export PATH="$HOME/bin:$HOME/code/home-sync/bin:$PATH" # added by home-sync
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
