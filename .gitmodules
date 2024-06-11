@@ -46,3 +46,21 @@
 [submodule "dot-files/vim/bundle/ctrlp.vim"]
 	path = dot-files/vim/bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim.git
+[submodule "dot-files/vim/bundle/vim-go.git"]
+	path = dot-files/vim/bundle/vim-go.git
+	url = https://github.com/fatih/vim-go.git
+[submodule "dot-files/oh-my-zsh"]
+	path = dot-files/oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh.git
+[submodule "dot-files/vim/bundle/SearchComplete"]
+	path = dot-files/vim/bundle/SearchComplete
+	url = https://github.com/vim-scripts/SearchComplete.git
+[submodule "dot-files/vim/bundle/neocomplcache"]
+	path = dot-files/vim/bundle/neocomplcache
+	url = "    README.md\n    autoload\n    doc\nhttps://github.com/Shougo/neocomplcache.git"
+[submodule "dot-files/vim/bundle/phpcomplete.vim"]
+	path = dot-files/vim/bundle/phpcomplete.vim
+	url = "    README\n    ftplugin\nhttps://github.com/shawncplus/phpcomplete.vim.git"
+[submodule "dot-files/vim/bundle/tagexplorer"]
+	path = dot-files/vim/bundle/tagexplorer
+	url = "    README\n    plugin\nhttps://github.com/vim-scripts/tagexplorer.vim.git"
