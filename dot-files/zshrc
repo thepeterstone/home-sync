@@ -7,7 +7,7 @@ ZSH_CUSTOM=$HOME/.zsh_custom
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="terst"
+#ZSH_THEME="terst"
 
 
 # load zgen
@@ -163,9 +163,5 @@ SOLAR_WHITE="%{$(tput setaf 254)%}"
 SOLAR_WHITE_BG="%{$(tput setab 254)%}"
 SOLAR_GRAY="%{$(tput setaf 238)%}"
 SOLAR_GRAY_BG="%{$(tput setab 238)%}"
-
-
-# sublime: syntax 'Packages/ShellScript/Shell-Unix-Generic.tmLanguage'
-# vim: filetype=sh syntax=sh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

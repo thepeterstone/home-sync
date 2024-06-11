@@ -97,6 +97,7 @@ endfunction
 
 " Readme headings
 imap \<CR> <Esc>YpVr=o<CR>
+imap <F1> <Esc>
 
 
 """""""""""""""
