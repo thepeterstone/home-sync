@@ -40,17 +40,8 @@
 
 [push]
 	default = simple
-[pull]
-	rebase = true
 [fetch]
 	prune = true
 
-[url "git@gitlab.eng.vmware.com:"]
-	insteadOf = https://gitlab.eng.vmware.com/
-
-[gpg]
-	format = ssh
-[gpg "ssh"]
-	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
-[commit]
-	gpgsign = true
+[init]
+	defaultBranch = main
