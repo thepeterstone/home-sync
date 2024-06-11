@@ -51,8 +51,11 @@ zle -N zle-line-init
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 plugins=(brew git github osx ssh-agent wd zsh-completions)
 autoload -U compinit && compinit
+
+source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 unsetopt autocd
@@ -165,3 +168,6 @@ SOLAR_GRAY="%{$(tput setaf 238)%}"
 SOLAR_GRAY_BG="%{$(tput setab 238)%}"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
