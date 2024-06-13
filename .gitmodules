@@ -58,3 +58,6 @@
 [submodule "dot-files/zsh_custom/plugins/zsh-completions"]
 	path = dot-files/zsh_custom/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions
+[submodule "lib/zgen"]
+	path = lib/zgen
+	url = https://github.com/tarjoilija/zgen
