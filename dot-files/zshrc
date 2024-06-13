@@ -20,13 +20,15 @@ if ! zgen saved; then
     zgen oh-my-zsh
 
     # plugins
-    zgen oh-my-zsh plugins/git
     zgen oh-my-zsh plugins/brew
-    zgen oh-my-zsh plugins/ssh-agent
-    zgen oh-my-zsh plugins/svn
-    zgen oh-my-zsh plugins/lein
-    zgen oh-my-zsh plugins/sudo
     zgen oh-my-zsh plugins/command-not-found
+    zgen oh-my-zsh plugins/git
+    zgen oh-my-zsh plugins/github
+    zgen oh-my-zsh plugins/macos
+    zgen oh-my-zsh plugins/ssh-agent
+    zgen oh-my-zsh plugins/sudo
+    zgen oh-my-zsh plugins/svn
+    zgen oh-my-zsh plugins/wd
     zgen load zsh-users/zsh-syntax-highlighting
 
     # completions
@@ -43,19 +45,19 @@ if ! zgen saved; then
     zgen save
 fi
 
-# Enable autosuggestions automatically.
-zle-line-init() {
-#    zle autosuggest-start
-}
-zle -N zle-line-init
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-plugins=(brew git github osx ssh-agent wd zsh-completions)
-autoload -U compinit && compinit
+## Enable autosuggestions automatically.
+#zle-line-init() {
+##    zle autosuggest-start
+#}
+#zle -N zle-line-init
+## Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+## Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+## Example format: plugins=(rails git textmate ruby lighthouse)
+#fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+#plugins=(brew git github macos ssh-agent wd zsh-completions)
+#autoload -U compinit && compinit
 
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 unsetopt autocd
@@ -115,7 +117,6 @@ tarcp () {
   (\cd $DIR; tar czf - $TARGET | ssh $HOST "(cd $DEST; tar xzvf -)")
 }
 
-alias cd=cdls
 alias cmi="$SUDO date && ./configure \$CONF && make && make test && $SUDO make install && make clean && date"
 alias histc="rm -rf ~/.lesshst ~/.histfile ~/.viminfo ~/.mysql_history ~/.zcompdump ~/.bash_history ~/.DS_Store ~/.Xauthority ~/.cache ~/.sqlite_history"
 alias ll='ls -lA' # long listing, + hidden
