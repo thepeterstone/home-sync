@@ -188,7 +188,7 @@ nmap <Leader>vd :VCSDiff<CR>
 "Color scheme
 set t_Co=256
 let g:zenburn_high_Contrast = 1
-colorscheme shine
+colorscheme zenburn
 
 " file, type, readonly, modified, col, line/totlines,percent
 "makes use of the following colors with %N*
