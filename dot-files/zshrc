@@ -10,13 +10,6 @@ ZSH=$HOME/.oh-my-zsh
 BASE_PATH=$HOME/workspace/thepeterstone/home-sync
 ZGEN=$BASE_PATH/lib/zgen
 ZSH_CUSTOM=$HOME/.zsh_custom
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-#ZSH_THEME="terst"
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
 
 # load zgen
 source "${ZGEN}/zgen.zsh"
