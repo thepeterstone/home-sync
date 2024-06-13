@@ -9,3 +9,5 @@ tags
 .idea
 .envrc
 *~
+temp-bosh-exec/
+.ignore
