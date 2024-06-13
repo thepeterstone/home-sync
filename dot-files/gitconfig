@@ -1,10 +1,12 @@
 [user]
-	name = Peter Stone
-	email = thepeterstone@gmail.com
+  name = Peter Stone
+  email = stonepe@vmware.com
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP8oTkPQdemPHbTEOGiUt6YOlyRskb2tZFQlGg1fp78u
 
 [core]
-	excludesfile = $HOME/.cvsignore
-	autocrlf = input
+  excludesfile = $HOME/.cvsignore
+  autocrlf = input
+  pager = delta
 
 [alias]
   blog="log origin/master... --left-right"
@@ -15,19 +17,13 @@
   dc=diff --cached
   di=diff
   ds="diff --staged"
-  fixup="commit --fixup"
   ff="pull --ff-only"
+  fixup="commit --fixup"
   flog="log --pretty=fuller --decorate"
+  force="push --force-with-lease"
   llog="log --date=local"
   lol="log --graph --decorate --oneline"
   lola="log --graph --decorate --oneline --all"
-  root = rev-parse --show-toplevel
-  rum="rebase master@{u}"
-  squash="commit --squash"
-  st = status
-  sta=stash
-  sur="submodule update --init --recursive"
-  unstage="reset HEAD"
   pr = "!f() { git fetch $1 refs/pull-requests/$2/merge:pr-$2; git checkout pr-$2; } ; f"
   prettylog =  log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
   root = rev-parse --show-toplevel
@@ -39,21 +35,54 @@
   unstage="reset HEAD"
 
 [color]
-	interactive = always
-	ui = auto
+  interactive = always
+  ui = auto
+
+[commit]
+  gpgsign = true
+
+[delta]
+  navigate = true
+    side-by-side = true
+[diff]
+  colorMoved = default
+
+[fetch]
+  prune = true
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 
 [grep]
-	lineNumber = true
+  lineNumber = true
 
-[rebase]
-	stat = true
-
-[push]
-	default = simple
-[fetch]
-	prune = true
+[interactive]
+  diffFilter = delta --color-only
 
 [init]
-	defaultBranch = main
+  defaultBranch = main
+
+[merge]
+  conflictstyle = zdiff3
+
 [pull]
-	ff = only
+  ff = only
+
+[push]
+  default = simple
+
+[rebase]
+  stat = true
+
+[rerere]
+  enabled = true 
+
+
+[url "git@github.com:"]
+  insteadOf = https://github.com/
+[url "git@gitlab.eng.vmware.com:"]
+  insteadOf = https://gitlab.eng.vmware.com/
+
