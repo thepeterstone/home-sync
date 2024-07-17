@@ -35,7 +35,7 @@ if ! zgen saved; then
     # completions
     zgen load zsh-users/zsh-completions src
 
-    # theses must be loaded AFTER zsh-syntax-highlighting
+    # these must be loaded AFTER zsh-syntax-highlighting
     zgen oh-my-zsh plugins/history-substring-search
     zgen load tarruda/zsh-autosuggestions
 
